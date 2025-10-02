@@ -194,6 +194,79 @@ a:visited{ color:var(--visited); }
 .divider{height:1px;border:0;background:var(--outline);opacity:.9}
 :root[data-theme="dark"] .divider{background:#1f2a44;opacity:1}
 :root[data-theme="dark"] .card, :root[data-theme="dark"] .wcard{ background:var(--surface-2); }
+
+/* ==== Dark tone adjustment (charcoal + MD3 purple) ==== */
+:root[data-theme="dark"]{
+  --bg:#121215;            /* charcoal */
+  --on-bg:#E6E7EA;
+  --surface:#18181B;       /* surface-1 */
+  --surface-2:#1F2024;     /* cards */
+  --outline:#2C2D33;
+  --muted:#A1A1AA;
+  --primary:#A78BFA;       /* violet 400 */
+  --on-primary:#0E0E11;
+  --primary-press:#8B5CF6; /* violet 500 */
+  --link:#B8A5FF;
+  --visited:#D3B9FF;
+}
+
+/* Buttons — base (sidebar & generic) */
+:root[data-theme="dark"] .btn,
+:root[data-theme="dark"] .control-btn{
+  background: var(--surface);
+  border:1px solid var(--outline);
+  color: var(--on-bg);
+}
+:root[data-theme="dark"] .btn:hover,
+:root[data-theme="dark"] .control-btn:hover{
+  background: #232329;
+}
+
+/* Primary action: Next */
+:root[data-theme="dark"] #btnNext{
+  background: var(--primary);
+  color: #ffffff;
+  border:1px solid color-mix(in oklab, var(--primary) 70%, black);
+}
+:root[data-theme="dark"] #btnNext:hover{
+  background: var(--primary-press);
+}
+
+/* Secondary tonal: Listen / Prev / Reveal */
+:root[data-theme="dark"] #btnPrev,
+:root[data-theme="dark"] #btnReveal,
+:root[data-theme="dark"] #btnShuffle,
+:root[data-theme="dark"] #btnReset,
+:root[data-theme="dark"] #btnSample,
+:root[data-theme="dark"] #btnSpeak{
+  background: #2A2336; /* primary-container-like */
+  color: #EDE9FE;
+  border-color: #3A3350;
+}
+:root[data-theme="dark"] #btnPrev:hover,
+:root[data-theme="dark"] #btnReveal:hover,
+:root[data-theme="dark"] #btnShuffle:hover,
+:root[data-theme="dark"] #btnReset:hover,
+:root[data-theme="dark"] #btnSample:hover,
+:root[data-theme="dark"] #btnSpeak:hover{
+  background: #332A47;
+}
+
+/* Choices remain subtle with state layers */
+:root[data-theme="dark"] .choice:hover{ background:#232329; }
+:root[data-theme="dark"] .choice.correct{
+  background: color-mix(in oklab, var(--ok) 18%, transparent);
+  border-color: var(--ok);
+}
+:root[data-theme="dark"] .choice.wrong{
+  background: color-mix(in oklab, var(--ng) 18%, transparent);
+  border-color: var(--ng);
+}
+
+/* Progress & dividers */
+:root[data-theme="dark"] .wtitle{ color: color-mix(in oklab, var(--on-bg) 88%, transparent); }
+:root[data-theme="dark"] .divider{ background:#2C2D33; opacity:1; }
+
 </style>
 </head>
 <body>
