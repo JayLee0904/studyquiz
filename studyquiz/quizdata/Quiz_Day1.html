@@ -1,0 +1,737 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Day1 (Page 60)</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.collection-content td {
+	white-space: pre-wrap;
+	word-break: break-word;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+blockquote.quote-large {
+	font-size: 1.25em;
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray {
+	color: rgba(128, 125, 120, 1);
+	fill: rgba(128, 125, 120, 1);
+}
+.highlight-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.highlight-orange {
+	color: rgba(204, 121, 47, 1);
+	fill: rgba(204, 121, 47, 1);
+}
+.highlight-yellow {
+	color: rgba(195, 148, 67, 1);
+	fill: rgba(195, 148, 67, 1);
+}
+.highlight-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.highlight-blue {
+	color: rgba(63, 126, 190, 1);
+	fill: rgba(63, 126, 190, 1);
+}
+.highlight-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.highlight-pink {
+	color: rgba(179, 84, 136, 1);
+	fill: rgba(179, 84, 136, 1);
+}
+.highlight-red {
+	color: rgba(201, 85, 73, 1);
+	fill: rgba(201, 85, 73, 1);
+}
+.highlight-default_background {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray_background {
+	background: rgba(42, 28, 0, 0.07);
+}
+.highlight-brown_background {
+	background: rgba(139, 46, 0, 0.086);
+}
+.highlight-orange_background {
+	background: rgba(224, 101, 1, 0.129);
+}
+.highlight-yellow_background {
+	background: rgba(211, 168, 0, 0.137);
+}
+.highlight-teal_background {
+	background: rgba(0, 100, 45, 0.09);
+}
+.highlight-blue_background {
+	background: rgba(0, 111, 200, 0.09);
+}
+.highlight-purple_background {
+	background: rgba(102, 0, 178, 0.078);
+}
+.highlight-pink_background {
+	background: rgba(197, 0, 93, 0.086);
+}
+.highlight-red_background {
+	background: rgba(223, 22, 0, 0.094);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(128, 125, 120, 1);
+	fill: rgba(128, 125, 120, 1);
+}
+.block-color-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.block-color-orange {
+	color: rgba(204, 121, 47, 1);
+	fill: rgba(204, 121, 47, 1);
+}
+.block-color-yellow {
+	color: rgba(195, 148, 67, 1);
+	fill: rgba(195, 148, 67, 1);
+}
+.block-color-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.block-color-blue {
+	color: rgba(63, 126, 190, 1);
+	fill: rgba(63, 126, 190, 1);
+}
+.block-color-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.block-color-pink {
+	color: rgba(179, 84, 136, 1);
+	fill: rgba(179, 84, 136, 1);
+}
+.block-color-red {
+	color: rgba(201, 85, 73, 1);
+	fill: rgba(201, 85, 73, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(240, 239, 237, 1);
+}
+.block-color-brown_background {
+	background: rgba(245, 237, 233, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 235, 222, 1);
+}
+.block-color-yellow_background {
+	background: rgba(249, 243, 220, 1);
+}
+.block-color-teal_background {
+	background: rgba(232, 241, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(232, 242, 250, 1);
+}
+.block-color-purple_background {
+	background: rgba(243, 235, 249, 1);
+}
+.block-color-pink_background {
+	background: rgba(250, 233, 241, 1);
+}
+.block-color-red_background {
+	background: rgba(252, 233, 231, 1);
+}
+.select-value-color-default { background-color: rgba(42, 28, 0, 0.07); }
+.select-value-color-gray { background-color: rgba(28, 19, 1, 0.11); }
+.select-value-color-brown { background-color: rgba(127, 51, 0, 0.156); }
+.select-value-color-orange { background-color: rgba(196, 88, 0, 0.203); }
+.select-value-color-yellow { background-color: rgba(209, 156, 0, 0.282); }
+.select-value-color-green { background-color: rgba(0, 96, 38, 0.156); }
+.select-value-color-blue { background-color: rgba(0, 99, 174, 0.172); }
+.select-value-color-purple { background-color: rgba(92, 0, 163, 0.141); }
+.select-value-color-pink { background-color: rgba(183, 0, 78, 0.152); }
+.select-value-color-red { background-color: rgba(206, 24, 0, 0.164); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="272bcc59-beeb-806d-8a0f-ee618d70f760" class="page sans"><header><div class="page-header-icon undefined"><img class="icon" src="Day1%20(Page%2060)%20272bcc59beeb806d8a0fee618d70f760/file.png"/></div><h1 class="page-title">Day1 (Page 60)</h1><p class="page-description"></p></header><div class="page-body"><p id="272bcc59-beeb-81ce-9b2d-cd3b26640683" class="">
+</p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="272bcc59-beeb-81da-8cd4-e3fd37f61c1d"><div style="width:100%"><h3 id="272bcc59-beeb-81b8-a4d9-d3090962405a" class="">間に（あいだに）: 하는 동안 사이에, 어떤 시점+어떤시점 범위가 정해진 시간에 무엇을 하는것, 사물과 사물사이</h3></div></figure><p id="272bcc59-beeb-81ca-9bef-ca515e9fb331" class="">JP : アクリル板を<mark class="highlight-teal">間に</mark>挟んで仕事をする人たち。<br/>KR : 아크릴판을 사이에 끼어서 일하는 사람들</p><figure id="272bcc59-beeb-81a3-8e3f-f04cf453f292" class="image"><a href="Day1%20(Page%2060)%20272bcc59beeb806d8a0fee618d70f760/kaisya_shigoto_acrylic.png"><img style="width:384px" src="Day1%20(Page%2060)%20272bcc59beeb806d8a0fee618d70f760/kaisya_shigoto_acrylic.png"/></a></figure><p id="272bcc59-beeb-81e3-9caf-e226d209e59d" class="">
+</p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="272bcc59-beeb-8123-a315-d52a19275ba3"><div style="width:100%"><h3 id="272bcc59-beeb-8148-959a-ff4813a0c489" class="">うちに : ~전에, 어떤 상태나 일이 끝나기전에  무언가를 하거나 어떤일이 일어나는 것, 동시에 다른 사항이 자연히 발생할 때 다른상태로 되어갈 때</h3></div></figure><p id="272bcc59-beeb-81c2-9430-d936ce8035d3" class="">JP : 今日の<mark class="highlight-teal">うちに</mark>この仕事を仕上げなくてはいけないです。<br/>KR : 오늘중으로 이일을 마무리하지 않으면 안됩니다. </p><figure id="272bcc59-beeb-81b0-9009-d9e3d4af5599" class="image"><a href="Day1%20(Page%2060)%20272bcc59beeb806d8a0fee618d70f760/mangaka_urenai.png"><img style="width:319px" src="Day1%20(Page%2060)%20272bcc59beeb806d8a0fee618d70f760/mangaka_urenai.png"/></a></figure><p id="272bcc59-beeb-804a-9916-c831e836d4dd" class="">
+</p><p id="272bcc59-beeb-8134-94e1-e019843afd27" class="">
+</p><p id="272bcc59-beeb-81c5-90a0-e2a797067159" class="">
+</p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="272bcc59-beeb-81c0-9d9c-f022a70a1fff"><div style="width:100%"><h3 id="272bcc59-beeb-811e-a7fd-d9d7706d697d" class="">上がる（あがる） : 올라가다 오르다 , 낮은 곳에서 높은 곳으로 이동 하는것, 사물의 가치나 정도가 높아지는 것 </h3></div></figure><p id="272bcc59-beeb-8151-afcc-d1dbd6dc7cab" class="">JP : 物価は<mark class="highlight-teal">上がる</mark>のに給料は上がらないので生活が大変です。<br/>KR : 물가는 오르는데 월급은 오르지 않아 생활이 힘듭니다.</p><figure id="272bcc59-beeb-812d-b190-d71e7ec30cce" class="image"><a href="Day1%20(Page%2060)%20272bcc59beeb806d8a0fee618d70f760/money_interest_up.png"><img style="width:336px" src="Day1%20(Page%2060)%20272bcc59beeb806d8a0fee618d70f760/money_interest_up.png"/></a></figure><p id="272bcc59-beeb-81e9-b3a8-d508540a9db3" class="">
+</p><p id="272bcc59-beeb-8130-a148-e0b3724af160" class="">
+</p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="272bcc59-beeb-81e8-adba-fa29cd7c760e"><div style="width:100%"><h3 id="272bcc59-beeb-81d0-bb7d-ec5dc7afe798" class=""><mark class="highlight-teal">上って</mark> （のぼる）: 올라가다 오르다 , 높은 곳을 향해서 서서히 이동해 가는 과정에 중점</h3></div></figure><p id="272bcc59-beeb-81b0-bbed-ec83eae2f5b0" class="">JP : 人々の話題に<mark class="highlight-teal">上って</mark>いる。<br/>KR : 사람들에게 화제에 오르고 있어요.</p><figure id="272bcc59-beeb-81c1-ad7c-f13c41d1b48b" class="image"><a href="Day1%20(Page%2060)%20272bcc59beeb806d8a0fee618d70f760/pop_wadai_net.png"><img style="width:384px" src="Day1%20(Page%2060)%20272bcc59beeb806d8a0fee618d70f760/pop_wadai_net.png"/></a></figure><p id="272bcc59-beeb-8096-9d5c-f87a2f5d85ce" class="">
+</p><p id="272bcc59-beeb-8101-8cb0-d3bb0ed09cba" class="">
+</p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="272bcc59-beeb-819f-9f2f-eced9cd22dd5"><div style="width:100%"><h3 id="272bcc59-beeb-8146-8a95-dd570c714cd5" class="">空き（あき） : 속이 빔, 빈 곳 , 내용물이 없는 용기, 원래 들어 있었던 것이나 들어 있어야 할 것이 들어있지 않다라는 의식을 강하게 내포</h3></div></figure><p id="272bcc59-beeb-8123-b4ca-fb1ca67d9a49" class=""><mark class="highlight-teal">JP : 空き</mark>缶や<mark class="highlight-teal">空き</mark>瓶はリサイクルしましょう。<br/>KR : 빈 캔이나 빈병은 재활용 합시다</p><figure id="272bcc59-beeb-810c-afb2-ebf161ab112f" class="image"><a href="Day1%20(Page%2060)%20272bcc59beeb806d8a0fee618d70f760/homeless_akikan_jitensya.png"><img style="width:709.9921875px" src="Day1%20(Page%2060)%20272bcc59beeb806d8a0fee618d70f760/homeless_akikan_jitensya.png"/></a></figure><p id="272bcc59-beeb-819f-90b1-c8ba56265610" class="">
+</p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="272bcc59-beeb-81cc-bb63-ea07fbd56baa"><div style="width:100%"><h3 id="272bcc59-beeb-8178-b5da-edb39facbebf" class=""><mark class="highlight-teal">空振り</mark>（から） : 빔 공, 공허, 내용물이 아무것도 없는 상태, 형식뿐이고 진정한 내용물은 없다</h3></div></figure><p id="272bcc59-beeb-8176-be30-c8fa0642436f" class="">JP : 今期は頑張りましたが、<mark class="highlight-teal">空振り</mark>に終わりました。<br/>KR : 이번 분기 열심히 했지만 헛스윙(헛수고)로 끝났습니다.</p><figure id="272bcc59-beeb-816c-90c1-ee85957ca891" class="image"><a href="Day1%20(Page%2060)%20272bcc59beeb806d8a0fee618d70f760/baseball_strike_woman.png"><img style="width:319px" src="Day1%20(Page%2060)%20272bcc59beeb806d8a0fee618d70f760/baseball_strike_woman.png"/></a></figure><p id="272bcc59-beeb-802d-ab13-fe3e190b3dc9" class="">
+</p><p id="272bcc59-beeb-8157-abbc-d6e27422352f" class="">
+</p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="272bcc59-beeb-81aa-baac-d695f00a010a"><div style="width:100%"><h3 id="272bcc59-beeb-8117-9953-ec9335c4be2b" class="">明らか（あきらか） : 명백함, 분명함, 분명하고 의문의 여지가 없는 것, 일반적이고 객관적인 판단</h3></div></figure><p id="272bcc59-beeb-81b4-9cf9-d6532fa87701" class="">JP : 彼の考え方は明らかに間違っている。<br/>KR : 그의 사고방식은 분명히 틀렸다.</p><figure id="272bcc59-beeb-81e6-a458-c261ee7adfa7" class="image"><a href="Day1%20(Page%2060)%20272bcc59beeb806d8a0fee618d70f760/zouge_mitsuryou.png"><img style="width:384px" src="Day1%20(Page%2060)%20272bcc59beeb806d8a0fee618d70f760/zouge_mitsuryou.png"/></a></figure><p id="272bcc59-beeb-8108-8384-f9f85ef246e7" class="">
+</p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="272bcc59-beeb-815d-9094-c703c8f629f9"><div style="width:100%"><h3 id="272bcc59-beeb-81eb-ab52-e512921a4b9c" class="">確か（たしか） : 확실함, 정확함, 틀림이 없다. 신용할 수 있다와 같이 자신감을 나타낼 때 </h3></div></figure><p id="272bcc59-beeb-8183-96cf-cee51e32e284" class="">JP : 彼女の料理の腕は、<mark class="highlight-teal">確か</mark>だ。<br/>KR : 그녀의 요리솜씨는 확실하다.</p><figure id="272bcc59-beeb-818c-9ca3-c305af93ab27" class="image"><a href="Day1%20(Page%2060)%20272bcc59beeb806d8a0fee618d70f760/job_cooking_ryouri_kenkyuka.png"><img style="width:240px" src="Day1%20(Page%2060)%20272bcc59beeb806d8a0fee618d70f760/job_cooking_ryouri_kenkyuka.png"/></a></figure><p id="272bcc59-beeb-81f8-91c1-c3c566244eab" class="">
+</p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="272bcc59-beeb-81e2-9835-cb37f52fcd90"><div style="width:100%"><h3 id="272bcc59-beeb-8132-9b23-ed229a46ebfc" class="">開けたら（あける） : 열다, 닫혀 있는 것, 막혀있는 것의 일부나 전부를 옮기거나 제거해서 출입구를 만드는 것</h3></div></figure><p id="272bcc59-beeb-8195-8ebb-d78b2fdecf0a" class="">JP : うちの家は窓を<mark class="highlight-teal">開けたら</mark>ら爽やかな風が部屋に入ってきます。<br/>KR : 우리집은 창문을 열면 상쾌한 바람이 방에 들어옵니다.</p><figure id="272bcc59-beeb-81bb-8e50-c68f5b6c1c58" class="image"><a href="Day1%20(Page%2060)%20272bcc59beeb806d8a0fee618d70f760/open_close_window.png"><img style="width:432px" src="Day1%20(Page%2060)%20272bcc59beeb806d8a0fee618d70f760/open_close_window.png"/></a></figure><p id="272bcc59-beeb-817f-ab65-d0b0b904284f" class="">
+</p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="272bcc59-beeb-8152-ac13-e29884489574"><div style="width:100%"><h3 id="272bcc59-beeb-816d-a48e-e46f7f5d5752" class="">開く（ひらく） : 열다, 펼치는 것, 또는 펴는것</h3></div></figure><p id="272bcc59-beeb-81c2-8beb-da0d0d65a438" class="">JP : 手帳のようにパカっと<mark class="highlight-teal">開く</mark>タイプのスマートフォンのカバー<br/>KR : 수첩처럼 탁 열리는 타입의 스마트폰 커버</p><figure id="272bcc59-beeb-81a8-854c-e94193973ef2" class="image"><a href="Day1%20(Page%2060)%20272bcc59beeb806d8a0fee618d70f760/smartphone_cover_techou.png"><img style="width:319px" src="Day1%20(Page%2060)%20272bcc59beeb806d8a0fee618d70f760/smartphone_cover_techou.png"/></a></figure><p id="272bcc59-beeb-800b-85da-d3b6f4610571" class=""><div class="indented"><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="272bcc59-beeb-812b-b6e8-f0c6554d46ad"><div style="width:100%"><h3 id="272bcc59-beeb-8107-8da7-f18170203824" class=""><mark class="highlight-teal">疲れきって（</mark>〜きる） : 다-하다, 완전히 - 하다, あげる는 일이 완성되다를 의미, きる는 끝날때까지 완전히~하다, 더이상 나머지가 없다, 終わる는 시간의 경과와 함께 끝나다</h3></div></figure></div></p><p id="272bcc59-beeb-81b3-8584-fbc625f1c055" class="">JP : 毎日<mark class="highlight-teal">疲れきって</mark>会社から帰って来る。<br/>KR : 매일 완전히 지친 몸으로 회사에서 돌아온다.</p><figure id="272bcc59-beeb-812a-9790-dddcf476260a" class="image"><a href="Day1%20(Page%2060)%20272bcc59beeb806d8a0fee618d70f760/nebusoku_tetsuya_ake_woman_smile.png"><img style="width:480px" src="Day1%20(Page%2060)%20272bcc59beeb806d8a0fee618d70f760/nebusoku_tetsuya_ake_woman_smile.png"/></a></figure><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="272bcc59-beeb-8128-a66b-e18a6ba24fac"><div style="width:100%"><h3 id="272bcc59-beeb-81da-9fe9-fcdaa3222b57" class="">あせた（あせる） : 바래다, 물건의 색이 태양,열등에 노출되어 연해질 때 사용</h3></div></figure><p id="272bcc59-beeb-81d6-94d0-f8f8dd9f6910" class="">JP : 彼はかなり色<mark class="highlight-teal">あせた</mark>服を着ている。<br/>KR : 그는 상당히 색 바랜 옷을 입고 있다.</p><figure id="272bcc59-beeb-8151-879b-dfcfc1b31cc3" class="image"><a href="Day1%20(Page%2060)%20272bcc59beeb806d8a0fee618d70f760/fashion_fukuya_fuku_nai.png"><img style="width:319px" src="Day1%20(Page%2060)%20272bcc59beeb806d8a0fee618d70f760/fashion_fukuya_fuku_nai.png"/></a></figure><p id="272bcc59-beeb-80ac-b8f0-ef478039de2b" class="">
+</p><p id="272bcc59-beeb-81d0-98cb-c8a2c0c54a46" class="">
+</p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="272bcc59-beeb-8112-8413-f92027eb972f"><div style="width:100%"><h3 id="272bcc59-beeb-8101-8c85-d96dae8b9237" class=""><mark class="highlight-teal">冷めて</mark>（さめる）: 바래다, 식다, 깨다, 원래 재질의 색에 가까워진다. 기온에 가까운 온도, 기분,관심 흥미가 사라질 때</h3></div></figure><p id="272bcc59-beeb-812c-a20b-d84045030754" class="">JP : もう彼への愛は、<mark class="highlight-teal">冷めて</mark>しまった。<br/>KR : 이미 그에 대한 사랑은 식어 버렸다.</p><figure id="272bcc59-beeb-810e-90be-f7f91e9b1b1b" class="image"><a href="Day1%20(Page%2060)%20272bcc59beeb806d8a0fee618d70f760/wedding_hyouhen_man.png"><img style="width:336px" src="Day1%20(Page%2060)%20272bcc59beeb806d8a0fee618d70f760/wedding_hyouhen_man.png"/></a></figure><p id="272bcc59-beeb-80ba-a6da-facf59327379" class="">
+</p><p id="272bcc59-beeb-8139-8e00-de99ae8d73fe" class="">
+</p><p id="272bcc59-beeb-819b-bd5a-e31836b7e9d4" class="">
+</p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="272bcc59-beeb-81fe-9bfa-eed602083ec8"><div style="width:100%"><h3 id="272bcc59-beeb-8170-bb5d-c45cab062cc3" class="">向う（むこう） : 저쪽, 맞은편, 상대방, 먼 장소나 방향, 자신과 반대측을 가리킴, 거리를 두고 있다는 의미를 강하게 포함. 반대의 입장, 대립되는 입장, 제3자</h3></div></figure><p id="272bcc59-beeb-81e2-bb43-e9c097966c01" class="">JP : 線路の向うに、ひまわりがたくさん咲いている。<br/>KR : 선로 저편에 해바라기가 많이 피어있다.</p><figure id="272bcc59-beeb-817d-a765-c05b89506aba" class="image"><a href="Day1%20(Page%2060)%20272bcc59beeb806d8a0fee618d70f760/flower_sunflower.png"><img style="width:432px" src="Day1%20(Page%2060)%20272bcc59beeb806d8a0fee618d70f760/flower_sunflower.png"/></a></figure><p id="272bcc59-beeb-8178-9f80-f0eddceddd86" class="">
+</p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="272bcc59-beeb-8195-b66a-f4d71036965c"><div style="width:100%"><h3 id="272bcc59-beeb-8117-bfaa-e191c73aa869" class="">あたかも : 마치, 사실은 그게 아닌데 그렇게 보인다</h3></div></figure><p id="272bcc59-beeb-81fd-9e75-e925481d723c" class="">JP : 刑事は、<mark class="highlight-teal">あたかも</mark>私が犯人であるかのように睨んだ。<br/>KR : 형사는 마치 내가 범인인 것처럼 째려보았다.</p><figure id="272bcc59-beeb-81b6-b97c-e5da376533dc" class="image"><a href="Day1%20(Page%2060)%20272bcc59beeb806d8a0fee618d70f760/kibishii_kewashii_man.png"><img style="width:288px" src="Day1%20(Page%2060)%20272bcc59beeb806d8a0fee618d70f760/kibishii_kewashii_man.png"/></a></figure><p id="272bcc59-beeb-8091-a26b-c7de6ef6d70e" class="">
+</p><p id="272bcc59-beeb-81bd-8957-d81c9da30ac5" class="">
+</p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="272bcc59-beeb-813f-94d6-c4e61b2a3831"><div style="width:100%"><h3 id="272bcc59-beeb-81f2-855e-d438925733b2" class="">いかにも : 과연,정말, 정말 그렇다고 납득할 경우에 사용</h3></div></figure><p id="272bcc59-beeb-8122-8631-fe5f3728059c" class="">JP : 砂糖と塩を間違えるなんて、<mark class="highlight-teal">いかにも</mark>君らしいよ。<br/>KR : 설탕과 소금을 헷갈리다니 과연 너답다.</p><figure id="272bcc59-beeb-8166-89bc-f78760315dc2" class="image"><a href="Day1%20(Page%2060)%20272bcc59beeb806d8a0fee618d70f760/cooking_hitotsumami.png"><img style="width:319px" src="Day1%20(Page%2060)%20272bcc59beeb806d8a0fee618d70f760/cooking_hitotsumami.png"/></a></figure><p id="272bcc59-beeb-8064-9cc4-f54ab43a6779" class="">
+</p><p id="272bcc59-beeb-8124-97c1-cde02baea611" class="">
+</p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="272bcc59-beeb-8181-98dc-ee309568af2b"><div style="width:100%"><h3 id="272bcc59-beeb-8132-a13f-efbbdac17f90" class="">辺（へん） : 근처, 부근, 대략적인 장소나 시간, へん은 あたり와 다르게 단독으로 쓰지 않고この、その、あの등과 같이 사용</h3></div></figure><p id="272bcc59-beeb-81d4-acb8-c537a3ca0bb9" class="">JP : このへんで、今日の仕事は終わりにしましょう。<br/>KR : 이쯤에서 오늘 일은 끝내기로 합시다.</p><figure id="272bcc59-beeb-8145-9dbf-d1adb757ac9c" class="image"><a href="Day1%20(Page%2060)%20272bcc59beeb806d8a0fee618d70f760/shigoto_desk_nobi_man.png"><img style="width:319px" src="Day1%20(Page%2060)%20272bcc59beeb806d8a0fee618d70f760/shigoto_desk_nobi_man.png"/></a></figure><p id="272bcc59-beeb-802f-af50-d24ddb0e6983" class="">
+</p><p id="272bcc59-beeb-817a-b6c2-ee052ef285c1" class="">
+</p><p id="272bcc59-beeb-81b8-8de9-c8f089afe251" class="">
+</p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="272bcc59-beeb-81b4-8d27-cf7d3b45b022"><div style="width:100%"><h3 id="272bcc59-beeb-81d5-bf19-c41f2ccc1675" class=""><mark class="highlight-teal">当たって</mark>（あたる） : 맞다, 부딫히다, 쐬다, 명중하다, 바람을 쐬다, 에상한 일이나 해답등이 정답, 복권등에 당첨되었을 때</h3></div></figure><p id="272bcc59-beeb-8157-acf5-e66064f23b28" class="">JP : やっぱり、彼女の予想が<mark class="highlight-teal">当たって</mark>、雨になったね。<br/>KR : 역시 그녀의 예상이 맞아서 비가 오는군.</p><figure id="272bcc59-beeb-8136-98cd-c54a15476f95" class="image"><a href="Day1%20(Page%2060)%20272bcc59beeb806d8a0fee618d70f760/fashion_ame_zubunure.png"><img style="width:319px" src="Day1%20(Page%2060)%20272bcc59beeb806d8a0fee618d70f760/fashion_ame_zubunure.png"/></a></figure><p id="272bcc59-beeb-8055-b3e4-e1a4f57d14cf" class="">
+</p><p id="272bcc59-beeb-8171-ad80-efa44f9e37a6" class="">
+</p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="272bcc59-beeb-81d9-be4d-c3931f5586b9"><div style="width:100%"><h3 id="272bcc59-beeb-81da-a183-ca239817dd8d" class=""><mark class="highlight-teal">ぶつかった（</mark>ぶつかる） : 부딪치다 마주치다, 충격이 느껴질 정도로 사물과 사물이 접촉할 때, 곤란한 상황에 빠졌을 때</h3></div></figure><p id="272bcc59-beeb-815c-a18b-e357f24b38a8" class="">JP : この先の交差点で、トラックとバイクが<mark class="highlight-teal">ぶつかった。</mark><br/>KR : 이 앞의 교차점에서 트럭과 오토바이가 부딫혔다</p><figure id="272bcc59-beeb-8166-9edc-f9eceaed2560" class="image"><a href="Day1%20(Page%2060)%20272bcc59beeb806d8a0fee618d70f760/jiko_car.png"><img style="width:432px" src="Day1%20(Page%2060)%20272bcc59beeb806d8a0fee618d70f760/jiko_car.png"/></a></figure><p id="272bcc59-beeb-81df-82cc-f81eb887f3b0" class="">
+</p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="272bcc59-beeb-8108-9dcb-de54e9874cf1"><div style="width:100%"><h3 id="272bcc59-beeb-8184-ad26-cc2e520fbb76" class="">あっさり : 간단하게, 시원스럽게, 산뜻하게, 짙지 않고 깔끔하게 느껴질 때, 간단히, 아싸리~ 져버리면 한국말에서도</h3></div></figure><p id="272bcc59-beeb-8135-aaa3-d8f7e33d6cb4" class="">JP : 彼女は、いやなことはすぐ忘れる、<mark class="highlight-teal">あっさり</mark>した性格です。<br/>KR : 그녀는 좋지 않은 일은 바로 잊어버리는 뒤끝없는 성격입니다.</p><figure id="272bcc59-beeb-807f-a46c-f17603a4aabd" class="image"><a href="Day1%20(Page%2060)%20272bcc59beeb806d8a0fee618d70f760/ok_woman.png"><img style="width:367px" src="Day1%20(Page%2060)%20272bcc59beeb806d8a0fee618d70f760/ok_woman.png"/></a></figure><p id="272bcc59-beeb-8137-ba4b-f9c1698da2f3" class="">
+</p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="272bcc59-beeb-8110-b6d5-db0055cb44b1"><div style="width:100%"><h3 id="272bcc59-beeb-8139-a238-ebb99e096ea7" class="">さっぱり : 깔끔하게, 시원하게, 전혀, 반복해서 생각에 잠기거나 하지 않는 성격, 맛이 짙지 않다. 기름지지 않다. 지우거나 깨끗해서 기분이 좋은 상태</h3></div></figure><p id="272bcc59-beeb-81c8-9223-df0b55f640a2" class="">JP : あんな男とは、きれい<mark class="highlight-teal">さっぱり</mark>別れました。<br/>KR : 저런 남자와는 깔끔하게 헤어졌습니다.</p><figure id="272bcc59-beeb-8146-a0a5-dc9349c8be82" class="image"><a href="Day1%20(Page%2060)%20272bcc59beeb806d8a0fee618d70f760/kokoro_pokkari_ana_man.png"><img style="width:292.99005126953125px" src="Day1%20(Page%2060)%20272bcc59beeb806d8a0fee618d70f760/kokoro_pokkari_ana_man.png"/></a></figure><p id="272bcc59-beeb-8039-9187-e9b0065a2742" class=""><div class="indented"><p id="272bcc59-beeb-815c-bbbe-f6386363ea19" class="">
+</p></div></p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="272bcc59-beeb-8109-b04d-f1fb2c122990"><div style="width:100%"><h3 id="272bcc59-beeb-81d8-9c0c-f46808a4c89b" class="">からっと : 활짝 바싹, 습기가 없이 밝고 산뜻한 상태</h3></div></figure><p id="272bcc59-beeb-81f2-96a1-ddd679af97e1" class="">JP : 梅雨が終わって、空が<mark class="highlight-teal">からっと</mark>と晴れ上がった。<br/>KR : 장마가 끝나고 하늘이 활짝 갰다.</p><figure id="272bcc59-beeb-81e8-9b5b-e68df58f9295" class="image"><a href="Day1%20(Page%2060)%20272bcc59beeb806d8a0fee618d70f760/tenki_hare_otoko.png"><img style="width:319px" src="Day1%20(Page%2060)%20272bcc59beeb806d8a0fee618d70f760/tenki_hare_otoko.png"/></a></figure><p id="272bcc59-beeb-8092-a651-f0050b5e2566" class="">
+</p><p id="272bcc59-beeb-8146-ad52-e9eed5f2ce7a" class="">
+</p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="272bcc59-beeb-81d8-abe7-c2b92e5bc0ec"><div style="width:100%"><h3 id="272bcc59-beeb-81c0-97c8-f8c37a23b943" class=""><mark class="highlight-teal">まとまらない（</mark>まとまる） : 정리되다, 해결나다, 하나의 그룹이나 단위로 될 때, 대립하고 있던 것이 해결되거나 생각이 잘 정리될 때</h3></div></figure><p id="272bcc59-beeb-81cd-9873-c25af08551ec" class="">JP : 考えが<mark class="highlight-teal">まとまらない</mark>ので困っています。<br/>KR : 생각이 정리되지 않아서 어려움을 겪고 있습니다.</p><figure id="272bcc59-beeb-81a0-9f82-d3a60994dfc5" class="image"><a href="Day1%20(Page%2060)%20272bcc59beeb806d8a0fee618d70f760/fukidashi_tensyoku_man.png"><img style="width:319px" src="Day1%20(Page%2060)%20272bcc59beeb806d8a0fee618d70f760/fukidashi_tensyoku_man.png"/></a></figure><p id="272bcc59-beeb-80ea-b026-ff0a36e4e1c0" class="">
+</p><p id="272bcc59-beeb-8193-8793-d572e2ecda00" class="">
+</p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="272bcc59-beeb-8160-b9b3-c2371f65ea09"><div style="width:100%"><h3 id="272bcc59-beeb-817b-a2b8-d91ceac75aa1" class=""><mark class="highlight-teal">寄せて</mark>（よせる） : 바싹 옆으로 대다, 마음을 두다, 보내다, 물건옆으로 가까이 가져가거나 가져다가 두는 것, 마음이나 관심이 강하게 가는 것</h3></div></figure><p id="272bcc59-beeb-813c-ad7b-e682033dbc74" class="">JP : 彼は彼女に心を<mark class="highlight-teal">寄せて</mark>いる。<br/>KR : 그는 그녀에게 마음을 두고 있다.</p><figure id="272bcc59-beeb-81ba-84a0-d998c7f66ae5" class="image"><a href="Day1%20(Page%2060)%20272bcc59beeb806d8a0fee618d70f760/renai3_young.png"><img style="width:336px" src="Day1%20(Page%2060)%20272bcc59beeb806d8a0fee618d70f760/renai3_young.png"/></a></figure><p id="272bcc59-beeb-80e2-9803-cbccd3d6b9e6" class=""><div class="indented"><p id="272bcc59-beeb-8125-8080-d02135e8ef32" class="">
+</p></div></p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="272bcc59-beeb-8171-9c7f-c75cc7b43579"><div style="width:100%"><h3 id="272bcc59-beeb-8129-8708-e72dc32de165" class="">あとで : 나중에, 조금 시간이 지난 후, 가까운 장래, 상황이 끝나고 다음일이 계속해서 일어나는 것</h3></div></figure><p id="272bcc59-beeb-817d-897e-c95702404f17" class="">JP : 私の部屋は、<mark class="highlight-teal">あとで</mark>片付けますから、そのままにしておいてください。<br/>KR : 제 방은 나중에 치울테니 그대로 놔두십시오.</p><figure id="272bcc59-beeb-8140-b648-ea2cff9c2355" class="image"><a href="Day1%20(Page%2060)%20272bcc59beeb806d8a0fee618d70f760/souji_kitanai_woman.png"><img style="width:399.9928894042969px" src="Day1%20(Page%2060)%20272bcc59beeb806d8a0fee618d70f760/souji_kitanai_woman.png"/></a></figure><p id="272bcc59-beeb-80cb-b041-fbce8a0577a1" class=""><div class="indented"><p id="272bcc59-beeb-815e-b662-cbd6b8f6d348" class="">
+</p></div></p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="272bcc59-beeb-81e4-b611-d41693b14130"><div style="width:100%"><h3 id="272bcc59-beeb-8198-96a3-e1b8e2ad2879" class="">後ほど（のちほど） : 조금 지난뒤에, 나중에, あとで보다 정중하고 격식을 차린 표현</h3></div></figure><p id="272bcc59-beeb-811e-bb2c-f1d7edc705e7" class="">JP : この件につきましては、<mark class="highlight-teal">後ほど</mark>詳しくご説明いたします。<br/>KR : 이 건에 관해서는 <mark class="highlight-default">나중에</mark> 자세히 설명드리겠습니다.</p><figure id="272bcc59-beeb-81a9-a349-f217c48d275a" class="image"><a href="Day1%20(Page%2060)%20272bcc59beeb806d8a0fee618d70f760/hanashiai_wakaranai_man.png"><img style="width:399.9928894042969px" src="Day1%20(Page%2060)%20272bcc59beeb806d8a0fee618d70f760/hanashiai_wakaranai_man.png"/></a></figure><p id="272bcc59-beeb-8149-be6c-d54b449a41e0" class="">
+</p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="272bcc59-beeb-81e0-aa68-e889d2528a12"><div style="width:100%"><h3 id="272bcc59-beeb-81bc-9235-f628c6a9f8a0" class=""><mark class="highlight-teal">あふれて（</mark>あふれる） : 넘치다, 가득차서 다 넣을 수 없어 일부가 밖으로 나오는 것 </h3></div></figure><p id="272bcc59-beeb-8176-9cb3-f75978cb92c5" class="">JP : 彼女の顔は、自信に<mark class="highlight-teal">あふれて</mark>いた。<br/>KR : 그녀의 얼굴은 자신감이 넘쳐 있다.</p><figure id="272bcc59-beeb-815b-9766-c83ebacfa52a" class="image"><a href="Day1%20(Page%2060)%20272bcc59beeb806d8a0fee618d70f760/yaruki_moeru_businesswoman.png"><img style="width:336px" src="Day1%20(Page%2060)%20272bcc59beeb806d8a0fee618d70f760/yaruki_moeru_businesswoman.png"/></a></figure><p id="272bcc59-beeb-8047-949d-e2acbdb0fb69" class=""><div class="indented"><p id="272bcc59-beeb-81f1-a83c-d9ab846a5c09" class="">
+</p></div></p><p id="272bcc59-beeb-8179-890c-fdfd3a8d4c33" class="">
+</p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="272bcc59-beeb-8168-824b-dd9956bfcf3b"><div style="width:100%"><h3 id="272bcc59-beeb-81ab-b88b-fcda03f8811b" class=""><mark class="highlight-teal">こぼれた（</mark>こぼれる） : 넘치다, 용기가 흔들리거나 쓰러지거나 구멍이 나거나 하는, 감정표현에 사용</h3></div></figure><p id="272bcc59-beeb-810e-a6ed-d57c747cd243" class="">JP : 車の後部座席に<mark class="highlight-teal">こぼれた</mark>ジュース<br/>KR : <strong>차 뒷좌석에 엎질러진 주스</strong></p><figure id="272bcc59-beeb-81f7-bf50-ec0b0fe3a659" class="image"><a href="Day1%20(Page%2060)%20272bcc59beeb806d8a0fee618d70f760/car_zaseki_cup.png"><img style="width:399.9928894042969px" src="Day1%20(Page%2060)%20272bcc59beeb806d8a0fee618d70f760/car_zaseki_cup.png"/></a></figure><p id="272bcc59-beeb-80c4-8b71-de5909ed2dcb" class="">
+</p><p id="272bcc59-beeb-816a-8409-f1ca5f216023" class="">
+</p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="272bcc59-beeb-81a8-b3a5-d234003b724f"><div style="width:100%"><h3 id="272bcc59-beeb-81ea-b81b-fc554b1743e6" class=""><mark class="highlight-teal">あまり</mark>ゲームはやって<mark class="highlight-teal">ない</mark>（あまり〜ない） : 그다지~않다, 수량 회수 정도가 많지 않다, 높지 않다</h3></div></figure><p id="272bcc59-beeb-81db-b86a-d8949953dc7d" class="">JP : この頃、仕事が忙しくて、<mark class="highlight-teal">あまり</mark>ゲームはやって<mark class="highlight-teal">ない</mark>。<br/>KR : 최근 일이 바빠서 그닥 게임은 하지 않네요.</p><figure id="272bcc59-beeb-81e6-bd85-d156347c965f" class="image"><a href="Day1%20(Page%2060)%20272bcc59beeb806d8a0fee618d70f760/netgame_chudoku_haijin.png"><img style="width:549.9928588867188px" src="Day1%20(Page%2060)%20272bcc59beeb806d8a0fee618d70f760/netgame_chudoku_haijin.png"/></a></figure><p id="272bcc59-beeb-802f-b622-d3637d2608ee" class="">
+</p><p id="272bcc59-beeb-81a3-83d4-ebbb2e79a55e" class="">
+</p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="272bcc59-beeb-81b6-b8de-cdd175d3640a"><div style="width:100%"><h3 id="272bcc59-beeb-8103-bbe2-fed3dedd12c1" class=""><mark class="highlight-teal">たいして</mark>えらくも<mark class="highlight-teal">ない（</mark>たいして〜ない） : 그다지~않다, 수량 회수 정도가 많지 않다, 높지 않다, 기대 이하, 예상 외</h3></div></figure><p id="272bcc59-beeb-81a2-8336-f9194902dcbc" class="">JP : 彼は<mark class="highlight-teal">たいして</mark>えらくも<mark class="highlight-teal">ない</mark>のに、いつもいばっている。<br/>KR : 그는 그다지 대단하지도 않은데 항상 우쭐댄다</p><figure id="272bcc59-beeb-81c2-9ccf-dea66ce419ec" class="image"><a href="Day1%20(Page%2060)%20272bcc59beeb806d8a0fee618d70f760/erasou.png"><img style="width:499.98577880859375px" src="Day1%20(Page%2060)%20272bcc59beeb806d8a0fee618d70f760/erasou.png"/></a></figure><p id="272bcc59-beeb-80fe-9521-cad32df08703" class="">
+</p></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

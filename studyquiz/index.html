@@ -1,0 +1,408 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>StudyQuiz – 호환성 고정 버전</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f6f8fc;--card:#fff;--ink:#0f172a;--muted:#6b7280;--border:#e5e7eb;--primary:#2962FF;--ok:#1B8E3E;--ng:#D32F2F}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Apple SD Gothic Neo,Noto Sans KR,sans-serif}
+.sidebar{position:fixed;left:0;top:0;bottom:0;width:320px;background:#fff;border-right:1px solid var(--border);padding:24px 20px}
+.brand{font-weight:700;display:flex;gap:8px;align-items:center}
+.btn{margin-top:12px;height:44px;width:100%;border:1px solid var(--border);border-radius:12px;background:#fff;font-weight:600;cursor:pointer}
+.btn:hover{background:#f4f6ff}
+.main{margin-left:320px;min-height:100vh;padding:32px;display:flex;justify-content:center}
+#app{width:100%;max-width:920px}
+.card{background:#fff;border:1px solid var(--border);border-radius:16px;padding:24px;box-shadow:0 10px 30px rgba(0,0,0,.06)}
+.header{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}
+.progress{color:var(--muted)}
+.image{width:100%;height:420px;object-fit:contain;background:#f7f9fc;border:1px solid #eef2f7;border-radius:12px}
+.img-hint{display:none;margin:8px 0 12px;color:#9ca3af;font-size:12px}
+.jp{font-size:22px;line-height:1.6;margin:12px 0 6px}
+.kr{color:var(--muted);white-space:pre-wrap;margin:0 0 16px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.choice{border:1px solid var(--border);border-radius:12px;background:#f9fafb;padding:12px 14px;text-align:center;cursor:pointer}
+.choice:hover{background:#f1f5ff}
+.choice.correct{border:1px solid var(--ok);background:#eaf7ef}
+.choice.wrong{border:1px solid var(--ng);background:#ffebee}
+.controls{margin-top:16px;display:flex;gap:12px;flex-wrap:wrap}
+.button{height:44px;padding:0 16px;border-radius:10px;border:1px solid var(--border);background:#fff;font-weight:600;cursor:pointer}
+.button:not(.next):hover{background:#f1f5ff}
+.next{background:var(--primary);border-color:var(--primary);color:#fff}
+.next:hover{background:#1f4fe0}
+.divider{height:1px;background:#e5e7eb;margin:20px 0}
+.small{font-size:12px;color:var(--muted)}
+pre.code{white-space:pre-wrap;background:#f8fafc;border:1px solid #e5e7eb;border-radius:10px;padding:10px}
+@media (max-width:980px){.sidebar{position:relative;width:auto;min-height:auto}.main{margin:0;padding:16px}.grid{grid-template-columns:1fr}}
+.badge{display:inline-block;padding:2px 6px;border-radius:8px;background:#eef2ff;border:1px solid #c7d2fe;font-size:12px;color:#334155;margin-left:8px}
+
+/* Feedback styles */
+.feedback{margin-top:16px}
+.fb-head{display:flex;align-items:center;gap:8px;font-weight:700;font-size:18px;margin-bottom:10px}
+.fb-head.ok{color:#1B8E3E}
+.fb-head.ng{color:#D32F2F}
+.fb-body{background:#EEF5FF;border-radius:12px;padding:16px}
+
+
+/* Intro hero */
+.card.intro{ text-align:center; padding:40px 24px }
+.card.intro .hero{ width:480px; height:382px; display:block; margin:0 auto 16px; }
+.card.intro .title{ font-size:24px; margin:4px 0 8px }
+.card.intro .subtitle{ color:var(--muted); margin:0 }
+
+.card.intro .controls{ justify-content:center } 
+.card.complete .hero{ width:480px; height:382px; display:block; margin:0 auto 16px; } 
+
+
+/* Brand logo */
+.brand{padding:4px 0 12px; justify-content:flex-start }
+.brand-btn{border:none;background:transparent;padding:0;margin:0;cursor:pointer}
+.brand-btn:focus{outline:none}
+.brand img{display:block; height:30px; width:auto; max-width:180px}
+
+
+/* Sidebar widgets */
+.widgets{margin-top:16px; display:flex; flex-direction:column; gap:12px}
+.wcard{border:1px solid var(--border); background:#fff; border-radius:12px; padding:12px}
+.wtitle{font-weight:700; font-size:14px; color:#334155; margin:0 0 6px}
+.wbody{font-size:14px; color:#0f172a}
+
+</style>
+</head>
+<body>
+<aside class="sidebar">
+  <div class="brand"><button class="brand-btn" onclick="App.goHome()" aria-label="홈으로">
+  <img src="asset/logo.png" alt="StudyQuiz 로고" onerror="this.style.display='none'">
+</button></div>
+  <button class="btn" onclick="App.pickHTML()">📂 퀴즈데이터 불러오기</button>
+  <input id="fileHtml" type="file" accept=".html,.htm" style="display:none">
+<div class="widgets" id="widgets">
+  <div class="wcard" aria-live="polite">
+    <p class="wtitle">진행 현황</p>
+    <div class="wbody" id="widProgress">데이터를 불러오면 표시됩니다.</div>
+  </div>
+</div>
+</aside>
+
+<main class="main"><div id="app"></div></main>
+
+<script>
+(function(){
+  function el(id){ return document.getElementById(id); }
+  function $(sel, root){ return (root||document).querySelector(sel); }
+  function $all(sel, root){ return Array.prototype.slice.call((root||document).querySelectorAll(sel)); }
+  function basename(p){ p = p||''; var parts = p.split('/'); return parts.length?parts[parts.length-1]:''; }
+
+  // 안전한 store 구현 (?? 없이)
+  var store = {
+    get: function(k, d){
+      try{
+        var raw = localStorage.getItem(k);
+        if(raw === null || raw === undefined) return d;
+        var parsed = JSON.parse(raw);
+        if(typeof parsed === 'undefined' || parsed === null) return d;
+        return parsed;
+      }catch(e){ return d; }
+    },
+    set: function(k, v){
+      try{ localStorage.setItem(k, JSON.stringify(v)); }catch(e){}
+    }
+    
+  };
+
+  function pieces(g){
+    var a = g.indexOf('（'), b = g.indexOf('）', a+1);
+    if(a!==-1 && b!==-1) return [g.slice(0,a).trim(), g.slice(a+1,b).trim()];
+    return [g.trim(),''];
+  }
+  function blankify(jp,g){
+    if(!jp||!g) return jp||'';
+    if(g.indexOf('〜')>-1){
+      var sp = g.split('〜');
+      var A = sp[0].trim(), B = sp[1] ? sp[1].trim() : '';
+      var iA = jp.indexOf(A);
+      if(iA!==-1){
+        var iB = jp.indexOf(B, iA + A.length);
+        if(iB!==-1) return jp.slice(0,iA) + '____' + jp.slice(iB + B.length);
+      }
+    }
+    var pp = pieces(g);
+    var base = pp[0], paren = pp[1];
+    var cand = [];
+    if(base) cand.push(base.replace(/[ \t]/g,''));
+    if(paren) cand.push(paren.replace(/[ \t]/g,''));
+    for(var i=0;i<cand.length;i++){
+      var c = cand[i];
+      if(c && jp.indexOf(c)>-1) return jp.replace(c,'____');
+    }
+    if(base && jp.indexOf(base)>-1) return jp.replace(base,'____');
+    return jp;
+  }
+
+  // 최신 문법 없이 파서
+  function safeText(node){ return (node && node.textContent) ? node.textContent : ''; }
+  function safeAttr(node, name){ return (node && node.getAttribute) ? (node.getAttribute(name) || '') : ''; }
+
+  function parseCustom(doc){
+    var blocks = $all('article.q', doc);
+    var items = [];
+    for(var i=0;i<blocks.length;i++){
+      var b = blocks[i];
+      var h = $('h3', b);
+      var grammar = (safeAttr(h,'data-grammar') || '').trim();
+      var meaning = (safeAttr(h,'data-meaning') || '').trim();
+      var jp = safeText($('.jp', b)).trim();
+      var kr = safeText($('.kr', b)).trim();
+      var img = $('.photo', b);
+      var alt = safeAttr(img,'alt').trim();
+      var src = safeAttr(img,'src').trim();
+      var image = alt || basename(src);
+      var detail = safeText($('.desc', b)).trim();
+      if(grammar && jp && kr){
+        items.push({grammar:grammar, explanation:meaning, detail:detail, jp:jp, kr:kr, image:image, originalSrc:src});
+      }
+    }
+    return items;
+  }
+
+  function parseNotion(doc){
+    var items = [];
+    var callouts = $all('figure.callout', doc);
+    for(var i=0;i<callouts.length;i++){
+      var fig = callouts[i];
+      var h3 = $('h3', fig);
+      var head = (safeText(h3) || '').trim().replace(/\s+/g,' ');
+      if(!head) continue;
+      var pos = head.indexOf(' : '); if(pos<0) pos = head.indexOf(':');
+      if(pos<0) continue;
+      var grammar = head.slice(0,pos).trim();
+      var meaning = head.slice(pos+1).trim();
+      var boundary = (i+1<callouts.length) ? callouts[i+1] : null;
+      var node = fig.nextElementSibling;
+      var jp='', kr='', image='', originalSrc='';
+      var steps=0;
+      while(node && node!==boundary && steps<200){
+        if(node.tagName==='P'){
+          var html = node.innerHTML.replace(/<br\s*\/?>(?=\n?)/gi, '\n');
+          var tmp = new DOMParser().parseFromString('<div>'+html+'</div>','text/html');
+          var text = tmp.documentElement.textContent || '';
+          var mJP = text.match(/JP\s*[：:]\s*(.+)/);
+          var mKR = text.match(/KR\s*[：:]\s*(.+)/);
+          if(mJP && !jp) jp = mJP[1].trim();
+          if(mKR && !kr) kr = mKR[1].trim();
+          if(!image){
+            var imgInP = $('img', node);
+            if(imgInP){
+              originalSrc = safeAttr(imgInP,'src').trim();
+              image = basename(originalSrc);
+            }
+          }
+        } else if(node.tagName==='FIGURE' && !node.classList.contains('callout')){
+          if(!image){
+            var im = $('img', node);
+            if(im){
+              originalSrc = safeAttr(im,'src').trim();
+              image = basename(originalSrc);
+            }
+          }
+        }
+        node = node.nextElementSibling;
+        steps++;
+      }
+      if(grammar && jp && kr){
+        items.push({grammar:grammar, explanation:meaning, detail:'', jp:jp, kr:kr, image:image, originalSrc:originalSrc});
+      }
+    }
+    // dedup
+    var dedup = [], seen = {};
+    for(var j=0;j<items.length;j++){
+      var it = items[j];
+      var key = it.grammar + '|' + it.jp;
+      if(!seen[key]){ dedup.push(it); seen[key]=true; }
+    }
+    return dedup;
+  }
+
+  function buildOptions(items){
+    var grams = items.map(function(it){ return it.grammar; });
+    items.forEach(function(it){
+      it.answer = it.grammar;
+      var pool = grams.filter(function(g){ return g!==it.grammar; });
+      for(var i=pool.length-1;i>0;i--){
+        var r = Math.floor(Math.random()*(i+1));
+        var t = pool[i]; pool[i] = pool[r]; pool[r] = t;
+      }
+      var opts = pool.slice(0,3);
+      while(opts.length<3) opts.push(it.grammar);
+      var arr = opts.concat([it.answer]);
+      arr.sort(function(){ return Math.random()-0.5; });
+      it.options = arr;
+    });
+    return items;
+  }
+
+  var st = { data:[], idx:0, right:0, done:0, answered:{} };
+
+  function updateWidgets(){
+    var elP = document.getElementById('widProgress');
+    var total = st.data ? st.data.length : 0;
+    if(elP){
+      if(total>0){
+        var wrong = (st.done - st.right);
+        if(wrong < 0) wrong = 0;
+        var rate = total ? Math.round(((total - wrong) / total) * 100) : 100; // 100%에서 시작, 오답마다 감소
+        if(rate < 0) rate = 0;
+        if(rate > 100) rate = 100;
+        elP.textContent = '✅ ' + st.right + ' / ' + total + ' 문제 · 정답률 ' + rate + '%';
+      }else{
+        elP.textContent = '데이터를 불러오면 표시됩니다.';
+      }
+    }
+}
+
+
+  function goHome(){
+    // reset in-memory state and UI
+    st.data = [];
+    st.idx = 0;
+    var inp = el('fileHtml'); if(inp) try{ inp.value = ''; }catch(e){}
+    st.right=0; st.done=0; st.answered={};
+    renderIntro();
+    updateWidgets();
+  }
+
+
+  function renderIntro(){
+    el('app').innerHTML = ''
+      + '<div class="card intro">'
+      + '  <img class="hero" src="asset/brown-study.png" alt="학습 일러스트" onerror="this.style.display=\'none\'">'
+      + '  <h2 class="title">일본어 문법 퀴즈</h2>'
+      + '  <p class="subtitle">퀴즈데이터 불러오기 버튼으로 Quiz html 파일을 불러오면 퀴즈가 시작됩니다.</p>'
+      + '</div>';
+    updateWidgets();
+  }
+
+  function render(){
+    if(!st.data.length){ st.right=0; st.done=0; st.answered={};
+    renderIntro();
+    updateWidgets(); return; }
+    var q = st.data[st.idx];
+    var jpBlank = blankify(q.jp, q.grammar);
+    var computed = 'photocard/' + (q.image||'');
+    var original = q.originalSrc || '';
+    var prevDis = (st.idx===0 ? 'disabled' : '');
+
+    var optionsHTML = q.options.map(function(o){
+      return '<button class="choice" onclick="App.pick(this,\'' + o.replace(/'/g, "\\'") + '\')">' + o + '</button>';
+    }).join('');
+
+    el('app').innerHTML = ''
+      + '<div class="card" role="group" aria-label="퀴즈 카드">'
+      + '  <div class="header">'
+      + '    <h3 style="margin:0">문제 ' + (st.idx+1) + '</h3>'
+      + '    <div class="progress">' + (st.idx+1) + '/' + st.data.length + '</div>'
+      + '  </div>'
+      + '  <img class="image" src="' + computed + '" title="' + (q.image||'') + '"'
+      + '       onerror="this.style.display=\'none\';const h=this.nextElementSibling;h.style.display=\'block\'; if(\'' + original + '\'){ const img=new Image(); img.onload=()=>{this.style.display=\'\'; this.src=\'' + original + '\'; h.style.display=\'none\';}; img.src=\'' + original + '\'; }">'
+      + '  <div class="img-hint">이미지를 불러올 수 없습니다. 확인 경로: <code>' + computed + '</code>' + (original?(' → 폴백시도: <code>' + original + '</code>'):'') + '</div>'
+      + '  <p class="jp">' + jpBlank + '</p>'
+      + '  <p class="kr">' + q.kr + '</p>'
+      + '  <div class="grid">' + optionsHTML + '</div>'
+      + '  <div class="controls">'
+      + '    <button class="button" ' + prevDis + ' onclick="App.prev()">이전</button>'
+      + '    <button class="button" onclick="App.speak(\'' + q.jp.replace(/'/g, "\\'") + '\')">🔊 듣기</button>'
+      + '    <button class="button next" onclick="App.next()">다음문제로</button>'
+      + '  </div>'
+      + '  <div class="divider"></div>'
+      + '  <div id="feedback" class="feedback"></div>' + '</div>';}
+
+  function pick(btn, val){
+    var q = st.data[st.idx];
+    var all = $all('.choice');
+    all.forEach(function(b){ b.disabled = true; });
+    if(!st.answered[st.idx]){ st.done++; st.answered[st.idx]=true; }
+    var fb = document.getElementById('feedback');
+    if(val===q.answer){
+      btn.classList.add('correct');
+      st.right++;
+      if(fb){
+        fb.innerHTML = ''
+          + '<div class="fb-head ok">' + '✅ 정답입니다!' + '</div>'
+          + '<div class="fb-body">' + (q.explanation||'') + '</div>';
+      }
+    } else {
+      btn.classList.add('wrong');
+      var right = null;
+      for(var i=0;i<all.length;i++){ if(all[i].textContent===q.answer){ right = all[i]; break; } }
+      if(right) right.classList.add('correct');
+      if(fb){
+        fb.innerHTML = ''
+          + '<div class="fb-head ng">' + '❌ 틀렸습니다.' + '</div>'
+          + '<div class="fb-body">' + (q.explanation||'') + '</div>';
+      }
+    }
+    updateWidgets();
+  }
+
+  function next(){
+    if(st.idx < st.data.length-1){ st.idx++; render(); updateWidgets(); }
+    else{
+      el('app').innerHTML = ''
+        + '<div class="card intro complete">'
+        + '  <img class="hero" src="asset/brown.gif" alt="축하 일러스트" onerror="this.style.display=\'none\'">'
+        + '  <h2 class="title">퀴즈 완료 🎉</h2>'
+        + '  <p class="subtitle">다시 풀기를 누르면 1번부터 시작합니다.</p>'
+        + '  <div class="controls" style="margin-top:16px">'
+        + '    <button class="button next" onclick="App.restart()">다시 풀기</button>'
+        + '  </div>'
+        + '</div>';
+    }
+    updateWidgets();
+  }
+  function prev(){ if(st.idx>0){ st.idx--; render(); } }
+  function restart(){ st.idx=0; st.right=0; st.done=0; st.answered={}; render(); updateWidgets(); }
+  function speak(t){
+    try{
+      var u = new SpeechSynthesisUtterance(t);
+      u.lang = 'ja-JP';
+      window.speechSynthesis.cancel();
+      window.speechSynthesis.speak(u);
+    }catch(e){}
+    updateWidgets();
+  }
+
+  function pickHTML(){
+    var inp = el('fileHtml');
+    inp.onchange = function(e){
+      var f = e.target.files[0]; if(!f) return;
+      var r = new FileReader();
+      r.onload = function(ev){
+        var html = ev.target.result;
+        var doc = new DOMParser().parseFromString(html,'text/html');
+        var items = parseCustom(doc);
+        if(!items.length){ items = parseNotion(doc); }
+        items = buildOptions(items);
+        st.data = items;
+        st.idx = 0; st.right=0; st.done=0; st.answered={};
+        render();
+        updateWidgets();
+        if(!st.data.length){
+          el('app').innerHTML = '<div class="card"><h3>jp.html에서 문제를 찾지 못했어요 😢</h3><p class="kr">Notion 내보내기 형태라면 <b>figure.callout</b> 아래 ~ 다음 callout 전까지에 <b>JP :</b> / <b>KR :</b> 라인이 필요합니다. 이미지가 있으면 더 좋아요.</p></div>';
+        }
+      };
+      r.readAsText(f,'utf-8');
+    };
+    inp.click();
+  }
+
+  // 전역으로 노출
+  window.App = { pickHTML:pickHTML, pick:pick, next:next, prev:prev, restart:restart, speak:speak, goHome:goHome };
+
+  // 초기 렌더
+  render();
+})();
+</script>
+</body>
+</html>
