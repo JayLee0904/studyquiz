@@ -267,6 +267,25 @@ a:visited{ color:var(--visited); }
 :root[data-theme="dark"] .wtitle{ color: color-mix(in oklab, var(--on-bg) 88%, transparent); }
 :root[data-theme="dark"] .divider{ background:#2C2D33; opacity:1; }
 
+
+/* ==== Fixes ==== */
+/* Next button hover to use purple */
+:root[data-theme="dark"] #btnNext:hover{
+  background: var(--primary-press) !important;
+}
+
+/* Prev & Speak (듣기) use dark grey base */
+:root[data-theme="dark"] #btnPrev,
+:root[data-theme="dark"] #btnSpeak{
+  background: #353535 !important;
+  color: var(--on-bg) !important;
+  border-color: #444 !important;
+}
+:root[data-theme="dark"] #btnPrev:hover,
+:root[data-theme="dark"] #btnSpeak:hover{
+  background: #404040 !important;
+}
+
 </style>
 </head>
 <body>
