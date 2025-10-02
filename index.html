@@ -289,6 +289,23 @@ a:visited{ color:var(--visited); }
   background: #404040;
 }
 
+
+/* === Dark theme tokens and button overrides === */
+:root[data-theme="dark"]{
+  --bg:#121215; --ink:#E6E7EA; --card:#18181B; --border:#2C2D33;
+  --muted:#A1A1AA; --primary:#A78BFA; --ok:#34D399; --ng:#FB7185;
+}
+:root[data-theme="dark"] body{ background:var(--bg); color:var(--ink); }
+:root[data-theme="dark"] .sidebar{ background:#18181B; border-color:var(--border); }
+:root[data-theme="dark"] .card{ background:#1F2024; border-color:var(--border); }
+:root[data-theme="dark"] .divider{ background:#2C2D33; }
+:root[data-theme="dark"] .button{ background:#353535; color:var(--ink); border-color:#444; }
+:root[data-theme="dark"] .button:not(.next):hover{ background:#404040; }
+:root[data-theme="dark"] .button.next{ background:var(--primary); border-color:color-mix(in oklab, var(--primary) 70%, black); color:#fff; }
+:root[data-theme="dark"] .button.next:hover{ background:#8B5CF6; }
+/* disabled */
+:root[data-theme="dark"] .button[disabled]{ background:#2a2a2a; color:#8b8b8b; border-color:#3a3a3a; opacity:1; }
+
 </style>
 </head>
 <body>
