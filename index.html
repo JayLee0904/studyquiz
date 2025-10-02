@@ -76,10 +76,7 @@ pre.code{white-space:pre-wrap;background:#f8fafc;border:1px solid #e5e7eb;border
   <div class="brand"><button class="brand-btn" onclick="App.goHome()" aria-label="홈으로">
   <img src="asset/logo.png" alt="StudyQuiz 로고" onerror="this.style.display='none'">
 </button></div>
-  <div class="btn-group"><button class="btn" onclick="App.loadSet('quizdata/Quiz_Day1.html')">📘 Quiz_Day1</button>
-<button class="btn" onclick="App.loadSet('quizdata/Quiz_Day2.html')">📗 Quiz_Day2</button>
-<button class="btn" onclick="App.loadSet('quizdata/Quiz_Day3.html')">📙 Quiz_Day3</button>
-</div>
+  <div id="autoBtnGroup" class="btn-group"></div>
   <input id="fileHtml" type="file" accept=".html,.htm" style="display:none">
 <input id="dirPicker" type="file" webkitdirectory directory multiple style="display:none">
 <div class="widgets" id="widgets">
@@ -498,6 +495,71 @@ updateWidgets();
         alert('로드 실패: ' + (err && err.message ? err.message : err));
       });
   }
+
+  // ---- Dynamic discovery of quizdata/Quiz_Day*.html ----
+  function extractDayNum(name){
+    var m = name.match(/Quiz_Day(\d+)\.html$/i);
+    return m ? parseInt(m[1], 10) : 0;
+  }
+  function renderDayButtons(files){
+    var box = document.getElementById('autoBtnGroup');
+    if(!box) return;
+    box.innerHTML = '';
+    if(!files || !files.length){
+      box.innerHTML = '<small>quizdata/ 폴더에서 Quiz_Day*.html을 찾지 못했습니다.</small>';
+      return;
+    }
+    files.sort(function(a,b){ return extractDayNum(a) - extractDayNum(b); });
+    files.forEach(function(file){
+      var n = extractDayNum(file);
+      var btn = document.createElement('button');
+      btn.className = 'btn';
+      btn.textContent = '📘 Quiz_Day' + (n||'');
+      btn.onclick = function(){ App.loadSet('quizdata/' + file); };
+      box.appendChild(btn);
+    });
+  }
+  function discoverDaysHTTP(){
+    // 1) Try manifest
+    return fetch('quizdata/index.json', {cache:'no-cache'})
+      .then(function(r){ if(!r.ok) throw new Error('no manifest'); return r.json(); })
+      .then(function(arr){
+        var files = (arr||[]).filter(function(x){ return /Quiz_Day\d+\.html$/i.test(x); });
+        renderDayButtons(files);
+      })
+      .catch(function(){
+        // 2) Probe sequentially with HEAD, stop after several misses
+        var found = [];
+        var i = 1, limit = 365, misses = 0, maxMiss = 5;
+        function step(){
+          if(i>limit || misses>=maxMiss){ renderDayButtons(found); return; }
+          var name = 'Quiz_Day' + i + '.html';
+          fetch('quizdata/' + name, { method:'HEAD', cache:'no-cache' })
+            .then(function(r){ if(r.ok){ found.push(name); misses=0; } else { misses++; } i++; step(); })
+            .catch(function(){ misses++; i++; step(); });
+        }
+        step();
+      });
+  }
+  function discoverDaysFILE(){
+    ensureFolderAccess(function(){
+      var keys = Object.keys(DirCache.files);
+      var files = keys
+        .filter(function(k){ return /(^|\/)quizdata\/Quiz_Day\d+\.html$/i.test(k); })
+        .map(function(k){ return k.replace(/^.*?quizdata[\\/]/,''); });
+      renderDayButtons(files);
+    });
+  }
+  function discoverDays(){
+    if(document.readyState === 'loading'){
+      document.addEventListener('DOMContentLoaded', discoverDays);
+      return;
+    }
+    if(location.protocol === 'file:'){ discoverDaysFILE(); }
+    else { discoverDaysHTTP(); }
+  }
+  // Run once
+  discoverDays();
 // 전역으로 노출
   window.App = { pickHTML:pickHTML, loadSet:loadSet, pick:pick, next:next, prev:prev, restart:restart, speak:speak, goHome:goHome };
 
