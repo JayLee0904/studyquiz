@@ -189,16 +189,18 @@ a:visited{ color:var(--visited); }
 /* Remove default blue focus ring */
 .btn:focus, .control-btn:focus, .choice:focus, .theme-toggle:focus{ outline: none !important; }
 
+
+/* Divider color per theme */
+.divider{height:1px;border:0;background:var(--outline);opacity:.9}
+:root[data-theme="dark"] .divider{background:#1f2a44;opacity:1}
 </style>
 </head>
 <body>
 <aside class="sidebar">
-  <div class="brand"><button class="brand-btn" onclick="App.goHome()" aria-label="홈으로">
+  <div class="brand" style="display:flex;align-items:center;gap:10px"><button class="brand-btn" onclick="App.goHome()" aria-label="홈으로">
   <img id="logo" src="asset/logo-lightmode.png" alt="StudyQuiz 로고" onerror="this.style.display='none'">
-</button></div>
-  <div class="toolbar">
-    <button id="btnTheme" class="theme-toggle" title="다크 모드 전환" aria-label="다크 모드 전환" aria-pressed="false"></button>
-  </div>
+</button>
+<button id="btnTheme" class="theme-toggle" title="다크 모드 전환" aria-label="다크 모드 전환" aria-pressed="false"></button></div>
   <div id="autoBtnGroup" class="btn-group"></div>
   <input id="fileHtml" type="file" accept=".html,.htm" style="display:none">
 <input id="dirPicker" type="file" webkitdirectory directory multiple style="display:none">
@@ -706,7 +708,9 @@ updateWidgets();
       }
     }
     var saved = null; try{ saved = localStorage.getItem(KEY); }catch(e){}
-    apply(saved || 'auto');
+    // First visit defaults to LIGHT
+    if(saved===null){ saved='light'; }
+    apply(saved);
     var btn = document.getElementById('btnTheme');
     if(btn){
       btn.addEventListener('click', function(){
