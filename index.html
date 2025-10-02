@@ -339,20 +339,22 @@ a:visited{ color:var(--visited); }
 }
 
 
-/* === Intro 디자인 재조정 === */
-/* 1. 텍스트(title)와 일러스트(heroImages) 사이 간격 확보 */
+/* === Intro 레이아웃 밸런스 조정 === */
+
+/* 1. subtitle 아래 간격 줄이기 */
 .intro .subtitle {
-  margin-bottom: 32px !important;
+  margin-bottom: 16px !important; /* 기존 32px → 16px */
 }
 
-/* 2. 일러스트를 기존 대비 80% 축소 */
+/* 2. 일러스트 전체를 카드 안에서 아래로 조금 내리기 */
 #heroImages {
-  display: flex;
-  justify-content: center;
+  padding-top: 24px; /* 필요에 따라 20~32px 조정 가능 */
+  text-align: center; /* 가운데 정렬 유지 */
 }
+
 #heroImages .hero-illust {
   transform: scale(0.8);
-  transform-origin: center top;
+  transform-origin: top center;
 }
 
 
