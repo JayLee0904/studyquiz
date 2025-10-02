@@ -299,6 +299,45 @@ a:visited{ color:var(--visited); }
   .hero-illust{ max-width: min(440px, 92%); margin-top:10px; }
 }
 
+
+/* === Dark theme: button overrides (class-based) === */
+:root[data-theme="dark"] .button{
+  background:#353535 !important;
+  color:var(--on-bg, #E6E7EA) !important;
+  border:1px solid #444 !important;
+}
+:root[data-theme="dark"] .button:not(.next):hover{
+  background:#404040 !important;
+}
+:root[data-theme="dark"] .button.next{
+  /* 다음문제로: 보라 톤 */
+  background:var(--primary, #A78BFA) !important;
+  color:#fff !important;
+  border:1px solid color-mix(in oklab, var(--primary, #A78BFA) 70%, black) !important;
+}
+:root[data-theme="dark"] .button.next:hover{
+  background:var(--primary-press, #8B5CF6) !important;
+}
+/* 비활성(이전) */
+:root[data-theme="dark"] .button[disabled]{
+  background:#2a2a2a !important;
+  color:#8b8b8b !important;
+  border-color:#3a3a3a !important;
+  opacity:1 !important; /* 기본 흐림 제거 */
+}
+
+/* === Main hero illust: 약 70% 크기 === */
+/* 데스크톱 기준: 560px → 약 392px (≈70%) */
+.hero-illust{
+  max-width:min(392px, 70%) !important;
+  height:auto !important;
+  margin-top:10px !important;
+}
+/* 모바일 기준: 440px → 약 308px (≈70%) */
+@media (max-width:520px){
+  .hero-illust{ max-width:min(308px, 72%) !important; }
+}
+
 </style>
 <link rel="icon" href="asset/favicon.svg">
 </head>
