@@ -290,21 +290,14 @@ a:visited{ color:var(--visited); }
 }
 
 
-/* === Dark theme tokens and button overrides === */
-:root[data-theme="dark"]{
-  --bg:#121215; --ink:#E6E7EA; --card:#18181B; --border:#2C2D33;
-  --muted:#A1A1AA; --primary:#A78BFA; --ok:#34D399; --ng:#FB7185;
+/* === Theme-aware hero PNGs (light/dark) === */
+.hero-illust{ display:block; max-width:min(560px, 92%); height:auto; margin:12px auto 0; }
+.hero-dark{ display:none; }
+:root[data-theme="dark"] .hero-light{ display:none; }
+:root[data-theme="dark"] .hero-dark{ display:block; }
+@media (max-width: 520px){
+  .hero-illust{ max-width: min(440px, 92%); margin-top:10px; }
 }
-:root[data-theme="dark"] body{ background:var(--bg); color:var(--ink); }
-:root[data-theme="dark"] .sidebar{ background:#18181B; border-color:var(--border); }
-:root[data-theme="dark"] .card{ background:#1F2024; border-color:var(--border); }
-:root[data-theme="dark"] .divider{ background:#2C2D33; }
-:root[data-theme="dark"] .button{ background:#353535; color:var(--ink); border-color:#444; }
-:root[data-theme="dark"] .button:not(.next):hover{ background:#404040; }
-:root[data-theme="dark"] .button.next{ background:var(--primary); border-color:color-mix(in oklab, var(--primary) 70%, black); color:#fff; }
-:root[data-theme="dark"] .button.next:hover{ background:#8B5CF6; }
-/* disabled */
-:root[data-theme="dark"] .button[disabled]{ background:#2a2a2a; color:#8b8b8b; border-color:#3a3a3a; opacity:1; }
 
 </style>
 </head>
@@ -520,7 +513,7 @@ a:visited{ color:var(--visited); }
   function renderIntro(){
     el('app').innerHTML = [
   '<div class="card intro">',
-  '  <div id="heroSvg" class="hero" role="img" aria-label="학습 일러스트"></div>',
+  '  <picture id="heroImages"><img class="hero-illust hero-light" src="asset/main_illust_lightmode.png" alt="학습 일러스트(라이트 모드)"><img class="hero-illust hero-dark" src="asset/main_illust_darkmode.png" alt="학습 일러스트(다크 모드)"></picture>',
   '  <h2 class="title">일본어 문법 퀴즈</h2>',
   '  <p class="subtitle">공부했던 내용을 복습해봅시다.</p>',
   '</div>'
@@ -595,7 +588,7 @@ updateWidgets();
     else{
       el('app').innerHTML = ''
         + '<div class="card intro complete">'
-        + '  <img class="hero" src="asset/brown.gif" alt="축하 일러스트" onerror="this.style.display=\'none\'">'
+        + '  <picture id="heroImages"><img class="hero-illust hero-light" src="asset/main_illust_lightmode.png" alt="학습 일러스트(라이트 모드)"><img class="hero-illust hero-dark" src="asset/main_illust_darkmode.png" alt="학습 일러스트(다크 모드)"></picture>'
         + '  <h2 class="title">퀴즈 완료 🎉</h2>'
         + '  <p class="subtitle">다시 풀기를 누르면 1번부터 시작합니다.</p>'
         + '  <div class="controls" style="margin-top:16px">'
@@ -719,7 +712,7 @@ function loadSet(url){
         if(!st.data.length){
           el('app').innerHTML = [
   '<div class="card intro">',
-  '  <div id="heroSvg" class="hero" role="img" aria-label="학습 일러스트"></div>',
+  '  <picture id="heroImages"><img class="hero-illust hero-light" src="asset/main_illust_lightmode.png" alt="학습 일러스트(라이트 모드)"><img class="hero-illust hero-dark" src="asset/main_illust_darkmode.png" alt="학습 일러스트(다크 모드)"></picture>',
   '  <h2 class="title">일본어 문법 퀴즈</h2>',
   '  <p class="subtitle">공부했던 내용을 복습해봅시다.</p>',
   '</div>'
@@ -838,48 +831,6 @@ updateWidgets();
   })();
 })();
 
-  // ==== Inline themeable SVG for hero (auto light/dark with optional svg[data-theme]) ====
-  (function(){
-    function injectSVG(){
-      var host = document.getElementById('heroSvg'); if(!host) return;
-      fetch('asset/brown-study.svg', {cache:'no-cache'})
-        .then(function(r){ return r.text(); })
-        .then(function(txt){
-          host.innerHTML = txt;
-          var svg = host.querySelector('svg');
-          if(svg){
-            var th = document.documentElement.getAttribute('data-theme') || 'light';
-            svg.setAttribute('data-theme', th);
-          }
-        })
-        .catch(function(e){ console.error('SVG load failed', e); });
-    }
-    function updateSVGTheme(){
-      var host = document.getElementById('heroSvg'); if(!host) return;
-      var svg = host.querySelector('svg'); if(!svg) return;
-      var th = document.documentElement.getAttribute('data-theme') || 'light';
-      svg.setAttribute('data-theme', th);
-    }
-    if(document.readyState === 'loading'){ document.addEventListener('DOMContentLoaded', injectSVG); }
-    else { injectSVG(); }
-    var obs = new MutationObserver(function(muts){
-      for(var i=0;i<muts.length;i++){
-        if(muts[i].attributeName === 'data-theme'){ updateSVGTheme(); break; }
-      }
-    });
-    obs.observe(document.documentElement, { attributes:true });
-  })();
-// 전역으로 노출
-  window.App = { pickHTML:pickHTML, loadSet:loadSet, pick:pick, next:next, prev:prev, restart:restart, speak:speak, goHome:goHome };
-
-  // file:// 안내 배너
-if(location.protocol === 'file:'){
-  var fh = document.getElementById('fileHint'); if(fh) fh.style.display='block';
-}
-
-// 초기 렌더
-  render();
-})();
-</script>
+  </script>
 </body>
 </html>
