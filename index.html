@@ -76,10 +76,19 @@ pre.code{white-space:pre-wrap;background:#f8fafc;border:1px solid #e5e7eb;border
   <div class="brand"><button class="brand-btn" onclick="App.goHome()" aria-label="홈으로">
   <img src="asset/logo.png" alt="StudyQuiz 로고" onerror="this.style.display='none'">
 </button></div>
-  <button class="btn" onclick="App.pickHTML()">📂 퀴즈데이터 불러오기</button>
+  <div class="btn-group"><button class="btn" onclick="App.loadSet('quizdata/Quiz_Day1.html')">📘 Quiz_Day1</button>
+<button class="btn" onclick="App.loadSet('quizdata/Quiz_Day2.html')">📗 Quiz_Day2</button>
+<button class="btn" onclick="App.loadSet('quizdata/Quiz_Day3.html')">📙 Quiz_Day3</button>
+</div>
   <input id="fileHtml" type="file" accept=".html,.htm" style="display:none">
+<input id="dirPicker" type="file" webkitdirectory directory multiple style="display:none">
 <div class="widgets" id="widgets">
   <div class="wcard" aria-live="polite">
+  <div id="fileHint" class="wcard" style="display:none">
+    <p class="wtitle">로컬 실행 안내</p>
+    <div class="wbody">파일로 직접 열었네요. Day 버튼을 누르면 한 번만 <b>studyquiz 폴더 선택</b> 창이 뜹니다. 그 다음부터는 CORS 없이 바로 동작합니다. (또는 간단 서버 실행도 가능)</div>
+  </div>
+
     <p class="wtitle">진행 현황</p>
     <div class="wbody" id="widProgress">데이터를 불러오면 표시됩니다.</div>
   </div>
@@ -275,14 +284,15 @@ pre.code{white-space:pre-wrap;background:#f8fafc;border:1px solid #e5e7eb;border
 
 
   function renderIntro(){
-    el('app').innerHTML = ''
-      + '<div class="card intro">'
-      + '  <img class="hero" src="asset/brown-study.png" alt="학습 일러스트" onerror="this.style.display=\'none\'">'
-      + '  <h2 class="title">일본어 문법 퀴즈</h2>'
-      + '  <p class="subtitle">퀴즈데이터 불러오기 버튼으로 Quiz html 파일을 불러오면 퀴즈가 시작됩니다.</p>'
-      + '</div>';
-    updateWidgets();
-  }
+    el('app').innerHTML = [
+  '<div class="card intro">',
+  '  <img class="hero" src="asset/brown-study.png" alt="학습 일러스트" onerror="this.style.display=&quot;none&quot;">',
+  '  <h2 class="title">일본어 문법 퀴즈</h2>',
+  '  <p class="subtitle">퀴즈 파일에서 문항을 찾지 못했습니다. HTML 구조를 알려주시면 파서를 보강할게요.</p>',
+  '</div>'
+].join('');
+updateWidgets();
+}
 
   function render(){
     if(!st.data.length){ st.right=0; st.done=0; st.answered={};
@@ -397,10 +407,106 @@ pre.code{white-space:pre-wrap;background:#f8fafc;border:1px solid #e5e7eb;border
     inp.click();
   }
 
-  // 전역으로 노출
-  window.App = { pickHTML:pickHTML, pick:pick, next:next, prev:prev, restart:restart, speak:speak, goHome:goHome };
+  
+  // 고정 세트 로드 (same-origin) : quizdata/*.html
+  
+  // --- CORS-safe local fallback ---
+  // When opened via file://, fetch() is blocked in Chrome.
+  // We allow user to pick the "studyquiz" folder once, then read quizdata/*.html via FileReader.
+  var DirCache = { files: {}, ready: false };
+  function ensureFolderAccess(cb){
+    if(DirCache.ready){ cb(); return; }
+    var input = document.getElementById('dirPicker');
+    if(!input){ cb(); return; }
+    input.onchange = function(e){
+      DirCache.files = {};
+      var list = e.target.files;
+      for(var i=0;i<list.length;i++){
+        var f = list[i];
+        // normalize relative path key (remove leading folder name)
+        var rel = (f.webkitRelativePath || f.name).replace(/^.*?studyquiz[\\/]/,'');
+        DirCache.files[rel] = f;
+      }
+      DirCache.ready = true;
+      cb();
+    };
+    input.click();
+  }
+  function readLocal(relPath){
+    return new Promise(function(resolve, reject){
+      var f = DirCache.files[relPath] || DirCache.files['quizdata/' + relPath] || DirCache.files[relPath.replace(/^\.\//,'')];
+      if(!f){ return reject(new Error('선택한 폴더에서 '+relPath+'를 찾지 못했습니다.')); }
+      var r = new FileReader();
+      r.onload = function(ev){ resolve(String(ev.target.result||'')); };
+      r.onerror = function(){ reject(new Error('파일 읽기 실패: '+relPath)); };
+      r.readAsText(f, 'utf-8');
+    });
+  }
+function loadSet(url){
+    var useFetch = location.protocol === 'http:' || location.protocol === 'https:';
+    if(!useFetch){
+      ensureFolderAccess(function(){
+        readLocal(url).then(function(html){
+          var doc = new DOMParser().parseFromString(html,'text/html');
+          var items = parseCustom(doc); if(!items.length) items = parseNotion(doc);
+          items = buildOptions(items);
+          st.data = items; st.idx=0; st.right=0; st.done=0; st.answered={};
+          render(); updateWidgets();
+          if(!st.data.length){
+            el('app').innerHTML = [
+              '<div class="card intro">',
+              '  <h2 class="title">파일에서 문항을 찾지 못했습니다</h2>',
+              '  <p class="subtitle">Quiz_Day*.html 구조를 알려주시면 파서를 보강할게요.</p>',
+              '</div>'
+            ].join('');
+            updateWidgets();
+          }
+        }).catch(function(err){
+          console.error(err); alert(err.message||err);
+        });
+      });
+      return; // stop here for file://
+    }
 
-  // 초기 렌더
+    fetch(url, { cache: 'no-cache' })
+      .then(function(res){
+        if(!res.ok) throw new Error('HTTP ' + res.status);
+        return res.text();
+      })
+      .then(function(html){
+        var doc = new DOMParser().parseFromString(html,'text/html');
+        var items = parseCustom(doc);
+        if(!items.length){ items = parseNotion(doc); }
+        items = buildOptions(items);
+        st.data = items;
+        st.idx = 0; st.right=0; st.done=0; st.answered={};
+        render();
+        updateWidgets();
+        if(!st.data.length){
+          el('app').innerHTML = [
+  '<div class="card intro">',
+  '  <img class="hero" src="asset/brown-study.png" alt="학습 일러스트" onerror="this.style.display=&quot;none&quot;">',
+  '  <h2 class="title">일본어 문법 퀴즈</h2>',
+  '  <p class="subtitle">퀴즈 파일에서 문항을 찾지 못했습니다. HTML 구조를 알려주시면 파서를 보강할게요.</p>',
+  '</div>'
+].join('');
+updateWidgets();
+}
+      })
+      .catch(function(err){
+        console.error(err);
+        alert('로드 실패: ' + (err && err.message ? err.message : err));
+      });
+  }
+// 전역으로 노출
+  window.App = { pickHTML:pickHTML, loadSet:loadSet, pick:pick, next:next, prev:prev, restart:restart, speak:speak, goHome:goHome };
+
+  // file:// 안내 배너
+if(location.protocol === 'file:'){
+  var fh = document.getElementById('fileHint'); if(fh) fh.style.display='block';
+}
+
+// 초기 렌더
   render();
 })();
 </script>
