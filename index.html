@@ -268,22 +268,25 @@ a:visited{ color:var(--visited); }
 :root[data-theme="dark"] .divider{ background:#2C2D33; opacity:1; }
 
 
-/* ==== Fixes ==== */
-/* Next button hover to use purple */
+/* ==== Strong overrides for Dark Mode Buttons ==== */
+:root[data-theme="dark"] #btnNext{
+  background: var(--primary);
+  color: #fff;
+  border:1px solid color-mix(in oklab, var(--primary) 70%, black);
+}
 :root[data-theme="dark"] #btnNext:hover{
-  background: var(--primary-press) !important;
+  background: var(--primary-press);
 }
 
-/* Prev & Speak (듣기) use dark grey base */
 :root[data-theme="dark"] #btnPrev,
 :root[data-theme="dark"] #btnSpeak{
-  background: #353535 !important;
-  color: var(--on-bg) !important;
-  border-color: #444 !important;
+  background: #353535;
+  color: #E6E7EA;
+  border:1px solid #444;
 }
 :root[data-theme="dark"] #btnPrev:hover,
 :root[data-theme="dark"] #btnSpeak:hover{
-  background: #404040 !important;
+  background: #404040;
 }
 
 </style>
