@@ -107,7 +107,7 @@ pre.code{white-space:pre-wrap;background:#f8fafc;border:1px solid #e5e7eb;border
 }
 body{ background:var(--bg); color:var(--on-bg); }
 .sidebar{ background:var(--surface); border-right:1px solid var(--outline); }
-.card, .wcard{ background:var(--surface-2); border:1px solid var(--outline); box-shadow:var(--shadow); }
+.card, .wcard{ background:var(--surface); border:1px solid var(--outline); box-shadow:var(--shadow); }
 .btn, .control-btn, .choice{
   background:var(--surface); color:var(--on-bg); border:1px solid var(--outline);
 }
@@ -193,14 +193,14 @@ a:visited{ color:var(--visited); }
 /* Divider color per theme */
 .divider{height:1px;border:0;background:var(--outline);opacity:.9}
 :root[data-theme="dark"] .divider{background:#1f2a44;opacity:1}
+:root[data-theme="dark"] .card, :root[data-theme="dark"] .wcard{ background:var(--surface-2); }
 </style>
 </head>
 <body>
 <aside class="sidebar">
-  <div class="brand" style="display:flex;align-items:center;gap:10px"><button class="brand-btn" onclick="App.goHome()" aria-label="홈으로">
+  <div class="brand" style="display:flex;align-items:center;justify-content:space-between;gap:12px"><div class="brand-left" style="display:flex;align-items:center;gap:10px"><button class="brand-btn" onclick="App.goHome()" aria-label="홈으로">
   <img id="logo" src="asset/logo-lightmode.png" alt="StudyQuiz 로고" onerror="this.style.display='none'">
-</button>
-<button id="btnTheme" class="theme-toggle" title="다크 모드 전환" aria-label="다크 모드 전환" aria-pressed="false"></button></div>
+</button></div><button id="btnTheme" class="theme-toggle" title="다크 모드 전환" aria-label="다크 모드 전환" aria-pressed="false"></button></div>
   <div id="autoBtnGroup" class="btn-group"></div>
   <input id="fileHtml" type="file" accept=".html,.htm" style="display:none">
 <input id="dirPicker" type="file" webkitdirectory directory multiple style="display:none">
@@ -688,45 +688,43 @@ updateWidgets();
 
   // ===== Theme toggle (persisted) =====
   (function(){
+    
+  // ===== Theme toggle (light <-> dark) =====
+  (function(){
     var KEY = 'sq:theme';
-    function apply(th){
+    function isDarkActive(val){
+      return val === 'dark';
+    }
+    function apply(val){
       var root = document.documentElement;
-      if(th === 'light') root.setAttribute('data-theme','light');
-      else if(th === 'dark') root.setAttribute('data-theme','dark');
-      else root.removeAttribute('data-theme'); // auto
+      var th = (val === 'dark') ? 'dark' : 'light';
+      root.setAttribute('data-theme', th);
       try{ localStorage.setItem(KEY, th); }catch(e){}
-      var logo = document.getElementById('logo');
-      if(logo){
-        var isDark = (th === 'dark') || (th === 'auto' && window.matchMedia && matchMedia('(prefers-color-scheme: dark)').matches);
-        logo.src = isDark ? 'asset/logo-nightmode.png' : 'asset/logo-lightmode.png';
-      }
       var btn = document.getElementById('btnTheme');
       if(btn){
-        var isDark = (th === 'dark') || (th === 'auto' && window.matchMedia && matchMedia('(prefers-color-scheme: dark)').matches);
-        btn.setAttribute('aria-pressed', isDark ? 'true' : 'false');
-        btn.title = isDark ? '라이트 모드로' : '다크 모드로';
+        var dark = isDarkActive(th);
+        btn.setAttribute('aria-pressed', dark ? 'true' : 'false');
+        btn.title = dark ? '라이트 모드로' : '다크 모드로';
+      }
+      var logo = document.getElementById('logo');
+      if(logo){
+        var dark = isDarkActive(th);
+        logo.src = dark ? 'asset/logo-nightmode.png' : 'asset/logo-lightmode.png';
       }
     }
     var saved = null; try{ saved = localStorage.getItem(KEY); }catch(e){}
-    // First visit defaults to LIGHT
-    if(saved===null){ saved='light'; }
+    if(!saved){ saved = 'light'; } // default first visit
     apply(saved);
     var btn = document.getElementById('btnTheme');
     if(btn){
       btn.addEventListener('click', function(){
-        var cur = localStorage.getItem(KEY) || 'auto';
-        var nxt = (cur === 'auto') ? 'dark' : (cur === 'dark' ? 'light' : 'auto');
+        var cur = (localStorage.getItem(KEY) || 'light');
+        var nxt = (cur === 'light') ? 'dark' : 'light';
         apply(nxt);
       });
     }
-    // Reflect system changes when on 'auto'
-    if(window.matchMedia){
-      matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function(){
-        var cur = localStorage.getItem(KEY) || 'auto';
-        if(cur === 'auto') apply('auto');
-      });
-    }
   })();
+})();
 // 전역으로 노출
   window.App = { pickHTML:pickHTML, loadSet:loadSet, pick:pick, next:next, prev:prev, restart:restart, speak:speak, goHome:goHome };
 
