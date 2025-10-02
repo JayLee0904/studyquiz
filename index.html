@@ -874,13 +874,15 @@ window.App = {
 };
 })();
 
+
 // --- Bootstrap: show intro on first visit when no data loaded ---
 (function(){
   function bootIntro(){
     try{
-      if(!window.st || !st.data || st.data.length===0){
-        if(typeof renderIntro==='function'){ renderIntro(); }
-        if(typeof updateWidgets==='function'){ updateWidgets(); }
+      var app = document.getElementById('app');
+      var hasChild = app && app.firstElementChild;
+      if(!hasChild && window.App && typeof App.goHome === 'function'){
+        App.goHome();
       }
     }catch(e){ console.warn(e); }
   }
@@ -890,7 +892,6 @@ window.App = {
     bootIntro();
   }
 })();
-
 </script>
 </body>
 </html>
