@@ -212,7 +212,7 @@ a:visited{ color:var(--visited); }
   </div>
 
     <p class="wtitle">진행 현황</p>
-    <div class="wbody" id="widProgress">데이터를 불러오면 표시됩니다.</div>
+    <div class="wbody" id="widProgress">퀴즈를 시작하면 표시됩니다.</div>
   </div>
 </div>
 </aside>
@@ -388,7 +388,7 @@ a:visited{ color:var(--visited); }
         if(rate > 100) rate = 100;
         elP.textContent = '✅ ' + st.right + ' / ' + total + ' 문제 · 정답률 ' + rate + '%';
       }else{
-        elP.textContent = '데이터를 불러오면 표시됩니다.';
+        elP.textContent = '퀴즈를 시작하면 표시됩니다.';
       }
     }
 }
@@ -410,7 +410,7 @@ a:visited{ color:var(--visited); }
   '<div class="card intro">',
   '  <div id="heroSvg" class="hero" role="img" aria-label="학습 일러스트"></div>',
   '  <h2 class="title">일본어 문법 퀴즈</h2>',
-  '  <p class="subtitle">퀴즈 파일에서 문항을 찾지 못했습니다. HTML 구조를 알려주시면 파서를 보강할게요.</p>',
+  '  <p class="subtitle">공부했던 내용을 복습해봅시다.</p>',
   '</div>'
 ].join('');
 updateWidgets();
@@ -609,7 +609,7 @@ function loadSet(url){
   '<div class="card intro">',
   '  <div id="heroSvg" class="hero" role="img" aria-label="학습 일러스트"></div>',
   '  <h2 class="title">일본어 문법 퀴즈</h2>',
-  '  <p class="subtitle">퀴즈 파일에서 문항을 찾지 못했습니다. HTML 구조를 알려주시면 파서를 보강할게요.</p>',
+  '  <p class="subtitle">공부했던 내용을 복습해봅시다.</p>',
   '</div>'
 ].join('');
 updateWidgets();
@@ -639,7 +639,7 @@ updateWidgets();
       var n = extractDayNum(file);
       var btn = document.createElement('button');
       btn.className = 'btn';
-      btn.textContent = '📘 Quiz_Day' + (n||'');
+      btn.textContent = 'Day' + (n||'');
       btn.onclick = function(){ App.loadSet('quizdata/' + file); };
       box.appendChild(btn);
     });
