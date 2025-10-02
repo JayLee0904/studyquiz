@@ -381,6 +381,24 @@ a:visited{ color:var(--visited); }
   }
 }
 
+
+/* === Listen button: simple icon via CSS mask (theme-aware) === */
+.controls .button:nth-child(2){
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+}
+.controls .button:nth-child(2)::before{
+  content:"";
+  width:18px; height:18px;
+  background: currentColor; /* inherits light/dark */
+  -webkit-mask: url('asset/listen-icon.png') no-repeat center / contain;
+          mask: url('asset/listen-icon.png') no-repeat center / contain;
+}
+/* (선택) 기존 이모지/아이콘 래퍼가 있다면 숨김 */
+.controls .button:nth-child(2) .emoji,
+.controls .button:nth-child(2) .icon{ display:none; }
+
 </style>
 <link rel="icon" href="asset/favicon.svg">
 </head>
