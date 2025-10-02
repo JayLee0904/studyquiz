@@ -69,6 +69,31 @@ pre.code{white-space:pre-wrap;background:#f8fafc;border:1px solid #e5e7eb;border
 .wtitle{font-weight:700; font-size:14px; color:#334155; margin:0 0 6px}
 .wbody{font-size:14px; color:#0f172a}
 
+
+  /* === Enhanced: Dark mode & responsive tweaks === */
+  :root[data-theme="dark"]{
+    --bg:#0b1220; --card:#0f172a; --ink:#e5e7eb; --muted:#94a3b8; --border:#1f2a44;
+    --primary:#7aa2ff; --ok:#4ade80; --ng:#f87171; --focus:#60a5fa;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --bg:#0b1220; --card:#0f172a; --ink:#e5e7eb; --muted:#94a3b8; --border:#1f2a44;
+      --primary:#7aa2ff; --ok:#4ade80; --ng:#f87171; --focus:#60a5fa;
+    }
+  }
+  .icon-btn{
+    display:inline-flex; align-items:center; justify-content:center;
+    width:40px; height:40px; border-radius:10px; border:1px solid var(--border);
+    background:#fff; cursor:pointer;
+  }
+  :root[data-theme="dark"] .icon-btn{ background:var(--card); }
+  .toolbar{display:flex; gap:8px; align-items:center; margin:8px 0;}
+  .btn-group, #autoBtnGroup{ display:grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap:8px; }
+  @media (max-width: 480px){
+    .sidebar{ padding:16px 14px; }
+    .main{ padding:16px; }
+  }
+
 </style>
 </head>
 <body>
@@ -76,6 +101,15 @@ pre.code{white-space:pre-wrap;background:#f8fafc;border:1px solid #e5e7eb;border
   <div class="brand"><button class="brand-btn" onclick="App.goHome()" aria-label="홈으로">
   <img src="asset/logo.png" alt="StudyQuiz 로고" onerror="this.style.display='none'">
 </button></div>
+  <div class="toolbar">
+    <button id="btnTheme" class="icon-btn" title="모드 전환" aria-label="모드 전환">🌓</button>
+    <label for="langSelect" style="font-size:12px; color:var(--muted)">Lang</label>
+    <select id="langSelect" style="height:36px; border-radius:8px; border:1px solid var(--border)">
+      <option value="ko">한국어</option>
+      <option value="ja">日本語</option>
+      <option value="en">English</option>
+    </select>
+  </div>
   <div id="autoBtnGroup" class="btn-group"></div>
   <input id="fileHtml" type="file" accept=".html,.htm" style="display:none">
 <input id="dirPicker" type="file" webkitdirectory directory multiple style="display:none">
@@ -560,6 +594,73 @@ updateWidgets();
   }
   // Run once
   discoverDays();
+
+  /* === Enhanced: Theme toggle + i18n (ko/ja/en) === */
+  var pref = { themeKey:'sq:theme', langKey:'sq:lang' };
+  function applyTheme(th){
+    var root = document.documentElement;
+    if(th === 'light') root.setAttribute('data-theme','light');
+    else if(th === 'dark') root.setAttribute('data-theme','dark');
+    else root.removeAttribute('data-theme'); // auto
+    try{ localStorage.setItem(pref.themeKey, th); }catch(e){}
+  }
+  function initTheme(){
+    var saved = null; try{ saved = localStorage.getItem(pref.themeKey); }catch(e){}
+    applyTheme(saved || 'auto');
+    var btn = document.getElementById('btnTheme');
+    if(btn){
+      btn.onclick = function(){
+        var cur = (localStorage.getItem(pref.themeKey) || 'auto');
+        var nxt = (cur === 'auto') ? 'light' : (cur === 'light' ? 'dark' : 'auto');
+        applyTheme(nxt);
+        btn.title = 'Theme: ' + nxt;
+      };
+      btn.title = 'Theme: ' + (saved||'auto');
+    }
+  }
+  var I18N = {
+    ko: {
+      quickLoad: '퀵 로드(Quiz)',
+      localHint: '파일로 직접 열었네요. Day 버튼을 누르면 한 번만 studyquiz 폴더를 선택합니다.',
+      loadQuiz: '퀴즈데이터 불러오기'
+    },
+    ja: {
+      quickLoad: 'クイックロード(クイズ)',
+      localHint: 'ファイルから直接開いています。最初の一回だけstudyquizフォルダを選択してください。',
+      loadQuiz: 'クイズデータを読み込む'
+    },
+    en: {
+      quickLoad: 'Quick Load (Quiz)',
+      localHint: 'Opened via file://. Select the studyquiz folder once when pressing a Day button.',
+      loadQuiz: 'Load quiz data'
+    }
+  };
+  function applyLang(lang){
+    var dict = I18N[lang] || I18N.ko;
+    document.documentElement.lang = lang;
+    // Example: update a few labels if present
+    var elQuick = document.querySelector('#wQuickLoad .wtitle');
+    if(elQuick) elQuick.textContent = dict.quickLoad;
+    var fileBtn = document.querySelector('button.btn[onclick*=\"pickHTML\"]');
+    if(fileBtn) fileBtn.textContent = '📂 ' + dict.loadQuiz;
+    var hint = document.getElementById('fileHint');
+    if(hint){
+      var body = hint.querySelector('.wbody'); if(body) body.textContent = dict.localHint;
+    }
+    try{ localStorage.setItem(pref.langKey, lang); }catch(e){}
+  }
+  function initLang(){
+    var sel = document.getElementById('langSelect');
+    var saved = null; try{ saved = localStorage.getItem(pref.langKey); }catch(e){}
+    var lang = saved || (navigator.language||'ko').slice(0,2);
+    if(sel){ sel.value = I18N[lang] ? lang : 'ko'; sel.onchange = function(){ applyLang(sel.value); }; }
+    applyLang(sel ? sel.value : (I18N[lang] ? lang : 'ko'));
+  }
+  if(document.readyState === 'loading'){
+    document.addEventListener('DOMContentLoaded', function(){ initTheme(); initLang(); });
+  }else{
+    initTheme(); initLang();
+  }
 // 전역으로 노출
   window.App = { pickHTML:pickHTML, loadSet:loadSet, pick:pick, next:next, prev:prev, restart:restart, speak:speak, goHome:goHome };
 
