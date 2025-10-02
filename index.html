@@ -591,7 +591,7 @@ function el(id){ return document.getElementById(id); }
         var rate = total ? Math.round(((total - wrong) / total) * 100) : 100; // 100%에서 시작, 오답마다 감소
         if(rate < 0) rate = 0;
         if(rate > 100) rate = 100;
-        elP.textContent = '✅ ' + st.right + ' / ' + total + ' 문제 · 정답률 ' + rate + '%';
+        elP.textContent = st.right + ' / ' + total + ' 문제 · 정답률 ' + rate + '%';
       }else{
         elP.textContent = '퀴즈를 시작하면 표시됩니다.';
       }
@@ -650,7 +650,7 @@ if(!st.data.length){ st.right=0; st.done=0; st.answered={};
       + '  <div class="grid">' + optionsHTML + '</div>'
       + '  <div class="controls">'
       + '    <button class="button" ' + prevDis + ' onclick="App.prev()">이전</button>'
-      + '    <button class="button" onclick="App.speak(\'' + q.jp.replace(/'/g, "\\'") + '\')">🔊 듣기</button>'
+      + '    <button class="button" onclick="App.speak(\'' + q.jp.replace(/'/g, "\\'") + '\')">듣기</button>'
       + '    <button class="button next" onclick="App.next()">다음문제로</button>'
       + '  </div>'
       + '  <div class="divider"></div>'
