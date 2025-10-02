@@ -372,6 +372,15 @@ a:visited{ color:var(--visited); }
 }
 
 
+
+/* === Quiz card image: mobile height reduction === */
+/* 모바일 전용: 가로폭이 520px 이하일 때 높이를 축소 */
+@media (max-width: 520px) {
+  .image {
+    height: 260px !important; /* 필요에 따라 240~280px로 조정 가능 */
+  }
+}
+
 </style>
 <link rel="icon" href="asset/favicon.svg">
 </head>
