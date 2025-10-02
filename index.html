@@ -561,7 +561,8 @@ updateWidgets();
 }
 
   function render(){
-    if(!st.data.length){ st.right=0; st.done=0; st.answered={};
+    if(!st || !st.data || st.data.length===0){ renderIntro(); updateWidgets(); return; }
+if(!st.data.length){ st.right=0; st.done=0; st.answered={};
     renderIntro();
     updateWidgets(); return; }
     var q = st.data[st.idx];
@@ -872,6 +873,24 @@ window.App = {
   goHome: goHome
 };
 })();
+
+// --- Bootstrap: show intro on first visit when no data loaded ---
+(function(){
+  function bootIntro(){
+    try{
+      if(!window.st || !st.data || st.data.length===0){
+        if(typeof renderIntro==='function'){ renderIntro(); }
+        if(typeof updateWidgets==='function'){ updateWidgets(); }
+      }
+    }catch(e){ console.warn(e); }
+  }
+  if(document.readyState==='loading'){
+    document.addEventListener('DOMContentLoaded', bootIntro);
+  }else{
+    bootIntro();
+  }
+})();
+
 </script>
 </body>
 </html>
