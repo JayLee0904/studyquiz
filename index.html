@@ -299,54 +299,6 @@ a:visited{ color:var(--visited); }
   .hero-illust{ max-width: min(440px, 92%); margin-top:10px; }
 }
 
-
-/* === Dark theme: button overrides (class-based) === */
-:root[data-theme="dark"] .button{
-  background:#353535 !important;
-  color:var(--on-bg, #E6E7EA) !important;
-  border:1px solid #444 !important;
-}
-:root[data-theme="dark"] .button:not(.next):hover{
-  background:#404040 !important;
-}
-:root[data-theme="dark"] .button.next{
-  /* 다음문제로: 보라 톤 */
-  background:var(--primary, #A78BFA) !important;
-  color:#fff !important;
-  border:1px solid color-mix(in oklab, var(--primary, #A78BFA) 70%, black) !important;
-}
-:root[data-theme="dark"] .button.next:hover{
-  background:var(--primary-press, #8B5CF6) !important;
-}
-/* 비활성(이전) */
-:root[data-theme="dark"] .button[disabled]{
-  background:#2a2a2a !important;
-  color:#8b8b8b !important;
-  border-color:#3a3a3a !important;
-  opacity:1 !important; /* 기본 흐림 제거 */
-}
-
-/* === Main hero illust: 약 70% 크기 === */
-/* 데스크톱 기준: 560px → 약 392px (≈70%) */
-.hero-illust{
-  max-width:min(392px, 70%) !important;
-  height:auto !important;
-  margin-top:10px !important;
-}
-/* 모바일 기준: 440px → 약 308px (≈70%) */
-@media (max-width:520px){
-  .hero-illust{ max-width:min(308px, 72%) !important; }
-}
-
-
-/* === Quiz card image: mobile height reduction === */
-/* 모바일 전용: 가로폭이 520px 이하일 때 높이를 축소 */
-@media (max-width: 520px) {
-  .image {
-    height: 260px !important; /* 필요에 따라 240~280px로 조정 가능 */
-  }
-}
-
 </style>
 <link rel="icon" href="asset/favicon.svg">
 </head>
@@ -570,8 +522,7 @@ updateWidgets();
 }
 
   function render(){
-    if(!st || !st.data || st.data.length===0){ renderIntro(); updateWidgets(); return; }
-if(!st.data.length){ st.right=0; st.done=0; st.answered={};
+    if(!st.data.length){ st.right=0; st.done=0; st.answered={};
     renderIntro();
     updateWidgets(); return; }
     var q = st.data[st.idx];
@@ -840,60 +791,57 @@ updateWidgets();
   // Run once
   discoverDays();
 
-  // ===== Theme toggle (light <-> dark, persisted) =====
-(function(){
-  var KEY = 'sq:theme';
-  function apply(th){
-    var mode = (th === 'dark') ? 'dark' : 'light';
-    document.documentElement.setAttribute('data-theme', mode);
-    try{ localStorage.setItem(KEY, mode); }catch(e){}
+  // ===== Theme toggle (persisted) =====
+  (function(){
+    
+  // ===== Theme toggle (light <-> dark) =====
+  (function(){
+    var KEY = 'sq:theme';
+    function isDarkActive(val){
+      return val === 'dark';
+    }
+    function apply(val){
+      var root = document.documentElement;
+      var th = (val === 'dark') ? 'dark' : 'light';
+      root.setAttribute('data-theme', th);
+      try{ localStorage.setItem(KEY, th); }catch(e){}
+      var btn = document.getElementById('btnTheme');
+      if(btn){
+        var dark = isDarkActive(th);
+        btn.setAttribute('aria-pressed', dark ? 'true' : 'false');
+        btn.title = dark ? '라이트 모드로' : '다크 모드로';
+      }
+      var logo = document.getElementById('logo');
+      if(logo){
+        var dark = isDarkActive(th);
+        logo.src = dark ? 'asset/logo-nightmode.png' : 'asset/logo-lightmode.png';
+      }
+    }
+    var saved = null; try{ saved = localStorage.getItem(KEY); }catch(e){}
+    if(!saved){ saved = 'light'; } // default first visit
+    apply(saved);
     var btn = document.getElementById('btnTheme');
     if(btn){
-      var isDark = (mode === 'dark');
-      btn.setAttribute('aria-pressed', isDark ? 'true' : 'false');
-      btn.title = isDark ? '라이트 모드로' : '다크 모드로';
+      btn.addEventListener('click', function(){
+        var cur = (localStorage.getItem(KEY) || 'light');
+        var nxt = (cur === 'light') ? 'dark' : 'light';
+        apply(nxt);
+      });
     }
-    var logo = document.getElementById('logo');
-    if(logo){
-      logo.src = (mode === 'dark') ? 'asset/logo-nightmode.png' : 'asset/logo-lightmode.png';
-    }
-  }
-  var saved = null; try{ saved = localStorage.getItem(KEY); }catch(e){}
-  if(!saved){ saved = 'light'; }
-  apply(saved);
-  var btn = document.getElementById('btnTheme');
-  if(btn){
-    btn.addEventListener('click', function(){
-      var cur = (localStorage.getItem(KEY) || 'light');
-      apply(cur === 'light' ? 'dark' : 'light');
-    });
-  }
 })();
-
-// ===== Expose App globally =====
-window.App = {
-  pickHTML: pickHTML,
-  loadSet: loadSet,
-  pick: pick,
-  next: next,
-  prev: prev,
-  restart: restart,
-  speak: speak,
-  goHome: goHome
-};
-})();
-
-// --- Bootstrap: show intro on first visit when no data loaded ---
+})})
+// --- Bootstrap: ensure intro card renders on first visit ---
 (function(){
   function bootIntro(){
     try{
-      if(!window.st || !st.data || st.data.length===0){
-        if(typeof renderIntro==='function'){ renderIntro(); }
-        if(typeof updateWidgets==='function'){ updateWidgets(); }
+      var app = document.getElementById('app');
+      var isEmpty = !app || !app.firstElementChild;
+      if(isEmpty && window.App && typeof App.goHome === 'function'){
+        App.goHome();
       }
     }catch(e){ console.warn(e); }
   }
-  if(document.readyState==='loading'){
+  if(document.readyState === 'loading'){
     document.addEventListener('DOMContentLoaded', bootIntro);
   }else{
     bootIntro();
