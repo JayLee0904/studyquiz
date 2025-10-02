@@ -408,7 +408,7 @@ a:visited{ color:var(--visited); }
   function renderIntro(){
     el('app').innerHTML = [
   '<div class="card intro">',
-  '  <img class="hero" src="asset/brown-study.png" alt="학습 일러스트" onerror="this.style.display=&quot;none&quot;">',
+  '  <div id="heroSvg" class="hero" role="img" aria-label="학습 일러스트"></div>',
   '  <h2 class="title">일본어 문법 퀴즈</h2>',
   '  <p class="subtitle">퀴즈 파일에서 문항을 찾지 못했습니다. HTML 구조를 알려주시면 파서를 보강할게요.</p>',
   '</div>'
@@ -607,7 +607,7 @@ function loadSet(url){
         if(!st.data.length){
           el('app').innerHTML = [
   '<div class="card intro">',
-  '  <img class="hero" src="asset/brown-study.png" alt="학습 일러스트" onerror="this.style.display=&quot;none&quot;">',
+  '  <div id="heroSvg" class="hero" role="img" aria-label="학습 일러스트"></div>',
   '  <h2 class="title">일본어 문법 퀴즈</h2>',
   '  <p class="subtitle">퀴즈 파일에서 문항을 찾지 못했습니다. HTML 구조를 알려주시면 파서를 보강할게요.</p>',
   '</div>'
@@ -725,6 +725,38 @@ updateWidgets();
     }
   })();
 })();
+
+  // ==== Inline themeable SVG for hero (auto light/dark with optional svg[data-theme]) ====
+  (function(){
+    function injectSVG(){
+      var host = document.getElementById('heroSvg'); if(!host) return;
+      fetch('asset/brown-study.svg', {cache:'no-cache'})
+        .then(function(r){ return r.text(); })
+        .then(function(txt){
+          host.innerHTML = txt;
+          var svg = host.querySelector('svg');
+          if(svg){
+            var th = document.documentElement.getAttribute('data-theme') || 'light';
+            svg.setAttribute('data-theme', th);
+          }
+        })
+        .catch(function(e){ console.error('SVG load failed', e); });
+    }
+    function updateSVGTheme(){
+      var host = document.getElementById('heroSvg'); if(!host) return;
+      var svg = host.querySelector('svg'); if(!svg) return;
+      var th = document.documentElement.getAttribute('data-theme') || 'light';
+      svg.setAttribute('data-theme', th);
+    }
+    if(document.readyState === 'loading'){ document.addEventListener('DOMContentLoaded', injectSVG); }
+    else { injectSVG(); }
+    var obs = new MutationObserver(function(muts){
+      for(var i=0;i<muts.length;i++){
+        if(muts[i].attributeName === 'data-theme'){ updateSVGTheme(); break; }
+      }
+    });
+    obs.observe(document.documentElement, { attributes:true });
+  })();
 // 전역으로 노출
   window.App = { pickHTML:pickHTML, loadSet:loadSet, pick:pick, next:next, prev:prev, restart:restart, speak:speak, goHome:goHome };
 
