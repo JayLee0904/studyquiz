@@ -174,12 +174,27 @@ a:visited{ color:var(--visited); }
   .main{ padding:16px; }
 }
 
+
+/* Feedback colors and surfaces */
+.fb-head.ok{ color: var(--ok) !important; }
+.fb-head.ng{ color: var(--ng) !important; }
+:root[data-theme="dark"] .fb-body{
+  background: color-mix(in oklab, var(--surface) 85%, var(--ok) 0%);
+  border:1px solid var(--outline);
+  color: var(--on-bg);
+}
+/* Progress card subtle contrast */
+:root[data-theme="dark"] #widProgress{ color: var(--on-bg); opacity: .9; }
+:root[data-theme="dark"] .wtitle{ color: color-mix(in oklab, var(--on-bg) 86%, transparent); }
+/* Remove default blue focus ring */
+.btn:focus, .control-btn:focus, .choice:focus, .theme-toggle:focus{ outline: none !important; }
+
 </style>
 </head>
 <body>
 <aside class="sidebar">
   <div class="brand"><button class="brand-btn" onclick="App.goHome()" aria-label="홈으로">
-  <img src="asset/logo.png" alt="StudyQuiz 로고" onerror="this.style.display='none'">
+  <img id="logo" src="asset/logo-lightmode.png" alt="StudyQuiz 로고" onerror="this.style.display='none'">
 </button></div>
   <div class="toolbar">
     <button id="btnTheme" class="theme-toggle" title="다크 모드 전환" aria-label="다크 모드 전환" aria-pressed="false"></button>
@@ -678,6 +693,11 @@ updateWidgets();
       else if(th === 'dark') root.setAttribute('data-theme','dark');
       else root.removeAttribute('data-theme'); // auto
       try{ localStorage.setItem(KEY, th); }catch(e){}
+      var logo = document.getElementById('logo');
+      if(logo){
+        var isDark = (th === 'dark') || (th === 'auto' && window.matchMedia && matchMedia('(prefers-color-scheme: dark)').matches);
+        logo.src = isDark ? 'asset/logo-nightmode.png' : 'asset/logo-lightmode.png';
+      }
       var btn = document.getElementById('btnTheme');
       if(btn){
         var isDark = (th === 'dark') || (th === 'auto' && window.matchMedia && matchMedia('(prefers-color-scheme: dark)').matches);
