@@ -791,44 +791,48 @@ updateWidgets();
   // Run once
   discoverDays();
 
-  // ===== Theme toggle (persisted) =====
-  (function(){
-    
-  // ===== Theme toggle (light <-> dark) =====
-  (function(){
-    var KEY = 'sq:theme';
-    function isDarkActive(val){
-      return val === 'dark';
-    }
-    function apply(val){
-      var root = document.documentElement;
-      var th = (val === 'dark') ? 'dark' : 'light';
-      root.setAttribute('data-theme', th);
-      try{ localStorage.setItem(KEY, th); }catch(e){}
-      var btn = document.getElementById('btnTheme');
-      if(btn){
-        var dark = isDarkActive(th);
-        btn.setAttribute('aria-pressed', dark ? 'true' : 'false');
-        btn.title = dark ? '라이트 모드로' : '다크 모드로';
-      }
-      var logo = document.getElementById('logo');
-      if(logo){
-        var dark = isDarkActive(th);
-        logo.src = dark ? 'asset/logo-nightmode.png' : 'asset/logo-lightmode.png';
-      }
-    }
-    var saved = null; try{ saved = localStorage.getItem(KEY); }catch(e){}
-    if(!saved){ saved = 'light'; } // default first visit
-    apply(saved);
+  // ===== Theme toggle (light <-> dark, persisted) =====
+(function(){
+  var KEY = 'sq:theme';
+  function apply(th){
+    var mode = (th === 'dark') ? 'dark' : 'light';
+    document.documentElement.setAttribute('data-theme', mode);
+    try{ localStorage.setItem(KEY, mode); }catch(e){}
     var btn = document.getElementById('btnTheme');
     if(btn){
-      btn.addEventListener('click', function(){
-        var cur = (localStorage.getItem(KEY) || 'light');
-        var nxt = (cur === 'light') ? 'dark' : 'light';
-        apply(nxt);
-      });
+      var isDark = (mode === 'dark');
+      btn.setAttribute('aria-pressed', isDark ? 'true' : 'false');
+      btn.title = isDark ? '라이트 모드로' : '다크 모드로';
     }
+    var logo = document.getElementById('logo');
+    if(logo){
+      logo.src = (mode === 'dark') ? 'asset/logo-nightmode.png' : 'asset/logo-lightmode.png';
+    }
+  }
+  var saved = null; try{ saved = localStorage.getItem(KEY); }catch(e){}
+  if(!saved){ saved = 'light'; }
+  apply(saved);
+  var btn = document.getElementById('btnTheme');
+  if(btn){
+    btn.addEventListener('click', function(){
+      var cur = (localStorage.getItem(KEY) || 'light');
+      apply(cur === 'light' ? 'dark' : 'light');
+    });
+  }
 })();
-})})</script>
+
+// ===== Expose App globally =====
+window.App = {
+  pickHTML: pickHTML,
+  loadSet: loadSet,
+  pick: pick,
+  next: next,
+  prev: prev,
+  restart: restart,
+  speak: speak,
+  goHome: goHome
+};
+})();
+</script>
 </body>
 </html>
