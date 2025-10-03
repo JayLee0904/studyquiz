@@ -399,6 +399,27 @@ a:visited{ color:var(--visited); }
 .controls .button:nth-child(2) .emoji,
 .controls .button:nth-child(2) .icon{ display:none; }
 
+/* Touch 디바이스에서는 hover 비활성화 */
+@media (hover: none) and (pointer: coarse) {
+  .choice:hover { background: inherit !important; }
+  :root[data-theme="dark"] .choice:hover { background: inherit !important; }
+
+  .button:not(.next):hover { background: inherit !important; }
+  #btnPrev:hover, #btnSpeak:hover { background: inherit !important; }
+  #btnNext:hover { background: var(--primary) !important; } /* 프라이머리는 유지 */
+}
+
+/* 데스크톱(마우스)에서만 hover 활성화 */
+@media (hover: hover) and (pointer: fine) {
+  .choice:hover { background: #f1f5ff; }
+  :root[data-theme="dark"] .choice:hover { background: #232329; }
+
+  .button:not(.next):hover { background: #f1f5ff; }
+  :root[data-theme="dark"] #btnPrev:hover,
+  :root[data-theme="dark"] #btnSpeak:hover { background: #404040; }
+  #btnNext:hover { background: var(--primary-press); }
+}
+  
 </style>
 <link rel="icon" href="asset/favicon.svg">
 </head>
