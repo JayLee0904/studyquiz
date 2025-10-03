@@ -329,7 +329,7 @@ a:visited{ color:var(--visited); }
 /* === Main hero illust: 약 70% 크기 === */
 /* 데스크톱 기준: 560px → 약 392px (≈70%) */
 .hero-illust{
-  max-width:min(240px, 70%) !important;
+  max-width:min(392px, 70%) !important;
   height:auto !important;
   margin-top:10px !important;
 }
@@ -639,7 +639,7 @@ function el(id){ return document.getElementById(id); }
   function renderIntro(){
     el('app').innerHTML = [
   '<div class="card intro">',
-  '  <picture id="heroImages"><img class="hero-illust hero-light" src="asset/main_illust_lightmode.png" alt="학습 일러스트(라이트 모드)"><img class="hero-illust hero-dark" src="asset/test.gif" alt="학습 일러스트(다크 모드)"></picture>',
+  '  <picture id="heroImages"><img class="hero-illust hero-light" src="asset/main_illust_lightmode.png" alt="학습 일러스트(라이트 모드)"><img class="hero-illust hero-dark" src="asset/main_illust_darkmode.png" alt="학습 일러스트(다크 모드)"></picture>',
   '  <h2 class="title">일본어 문법 퀴즈</h2>',
   '  <p class="subtitle">공부했던 내용을 복습해봅시다.</p>',
   '</div>'
