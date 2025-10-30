@@ -1,0 +1,726 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Quiz_Day 4 (page240)</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 10px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.collection-content td {
+	white-space: pre-wrap;
+	word-break: break-word;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.callout img.notion-static-icon {
+	width: 1em;
+	height: 1em;
+}
+
+.callout p {
+	margin: 0;
+}
+
+.callout h1,
+.callout h2,
+.callout h3 {
+	margin: 0 0 0.6rem;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+blockquote.quote-large {
+	font-size: 1.25em;
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.highlight-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.highlight-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.highlight-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.highlight-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.highlight-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.highlight-default_background {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray_background {
+	background: rgba(42, 28, 0, 0.07);
+}
+.highlight-brown_background {
+	background: rgba(139, 46, 0, 0.086);
+}
+.highlight-orange_background {
+	background: rgba(224, 101, 1, 0.129);
+}
+.highlight-yellow_background {
+	background: rgba(211, 168, 0, 0.137);
+}
+.highlight-teal_background {
+	background: rgba(0, 100, 45, 0.09);
+}
+.highlight-blue_background {
+	background: rgba(0, 124, 215, 0.094);
+}
+.highlight-purple_background {
+	background: rgba(102, 0, 178, 0.078);
+}
+.highlight-pink_background {
+	background: rgba(197, 0, 93, 0.086);
+}
+.highlight-red_background {
+	background: rgba(223, 22, 0, 0.094);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.block-color-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.block-color-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.block-color-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.block-color-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.block-color-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(240, 239, 237, 1);
+}
+.block-color-brown_background {
+	background: rgba(245, 237, 233, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 235, 222, 1);
+}
+.block-color-yellow_background {
+	background: rgba(249, 243, 220, 1);
+}
+.block-color-teal_background {
+	background: rgba(232, 241, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(229, 242, 252, 1);
+}
+.block-color-purple_background {
+	background: rgba(243, 235, 249, 1);
+}
+.block-color-pink_background {
+	background: rgba(250, 233, 241, 1);
+}
+.block-color-red_background {
+	background: rgba(252, 233, 231, 1);
+}
+.select-value-color-default { background-color: rgba(42, 28, 0, 0.07); }
+.select-value-color-gray { background-color: rgba(28, 19, 1, 0.11); }
+.select-value-color-brown { background-color: rgba(127, 51, 0, 0.156); }
+.select-value-color-orange { background-color: rgba(196, 88, 0, 0.203); }
+.select-value-color-yellow { background-color: rgba(209, 156, 0, 0.282); }
+.select-value-color-green { background-color: rgba(0, 96, 38, 0.156); }
+.select-value-color-blue { background-color: rgba(0, 118, 217, 0.203); }
+.select-value-color-purple { background-color: rgba(92, 0, 163, 0.141); }
+.select-value-color-pink { background-color: rgba(183, 0, 78, 0.152); }
+.select-value-color-red { background-color: rgba(206, 24, 0, 0.164); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="285bcc59-beeb-8040-b0dc-c6931f472632" class="page sans"><header><div class="page-header-icon undefined"><img class="icon" src="Quiz_Day%204%20(page240)/file.png"/></div><h1 class="page-title">Quiz_Day 4 (page240)</h1><p class="page-description"></p></header><div class="page-body"><p id="285bcc59-beeb-812d-84d2-dee780f03ebe" class="">
+</p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="285bcc59-beeb-8194-af9a-cb91fc14ada0"><div style="width:100%"><h3 id="285bcc59-beeb-81e1-897f-d33e267f0a66" class="">知らせて（しらせる） : 알리다. 상대에게 정보를 전달하는 것</h3></div></figure><p id="285bcc59-beeb-813a-a273-e7d0e7b853e8" class="">JP : 私が引っ越したことは、まだ誰にも知らせていません。<br/>KR : 제가 이사한 것은 아직 아무에게도 알리지 않았습니다.</p><figure id="292bcc59-beeb-80ab-9a70-ff57b538a728" class="image"><a href="Quiz_Day%204%20(page240)/ikanoosushi5_shiraseru.png"><img style="width:384px" src="Quiz_Day%204%20(page240)/ikanoosushi5_shiraseru.png"/></a></figure><p id="292bcc59-beeb-8012-a1e1-e67bb97e1c98" class="">
+</p><p id="292bcc59-beeb-8080-b42b-ff79bf9bb199" class="">
+</p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="292bcc59-beeb-80b2-9372-e2d347606034"><div style="width:100%"><h3 id="292bcc59-beeb-802f-996f-c8e9a6755a67" class="">押さえて（おさえる） : 누르다. 힘을 가해 물건의 움직임을 멈추는 것, 저지하는 것</h3></div></figure><p id="292bcc59-beeb-8096-87a2-c0d03d21ca64" class="">JP : 警察は犯人が逃げられないように押さえていた。<br/>KR : 경찰은 범인이 도망가지 못하게 누르고 있었다</p><figure id="292bcc59-beeb-801b-a432-c1e250feb8f6" class="image"><a href="Quiz_Day%204%20(page240)/toriosae_taiho_police.png"><img style="width:432px" src="Quiz_Day%204%20(page240)/toriosae_taiho_police.png"/></a></figure><p id="292bcc59-beeb-8012-b97f-f65b3299d4b6" class="">
+</p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="292bcc59-beeb-8023-8200-c647651dc5fc"><div style="width:100%"><h3 id="292bcc59-beeb-8052-a295-e312459e1e9c" class="">鈍い（のろい） : 느리다. 시간이 걸리다. 움직임이 둔하다. 깔보는 느낌을 담고 있다</h3></div></figure><p id="292bcc59-beeb-80d6-bce1-ce67d72c32e8" class="">JP : このバスは鈍いから歩いたほうが早く着く。<br/>KR : 이 버스는 느리니까 걷는 편이 빨리 도착한다</p><figure id="292bcc59-beeb-8004-b712-d8090a6ab16e" class="image"><a href="Quiz_Day%204%20(page240)/bus_woman_kousya_back.png"><img style="width:528px" src="Quiz_Day%204%20(page240)/bus_woman_kousya_back.png"/></a></figure><p id="292bcc59-beeb-805d-8ec7-f97b3f145c7c" class="">
+</p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="292bcc59-beeb-80b8-806f-c89c88c22cd2"><div style="width:100%"><h3 id="292bcc59-beeb-80ea-9746-cb373c07c6c4" class="">恐ろしい（おそろしい） : 무섭다. 일반적으로 생각할 수 없을정도로 비정상적인 일이나 섬뜩한 것, 기분 나쁜것을 봤을 때 느끼는 모습</h3></div></figure><p id="292bcc59-beeb-8052-8598-fa8d91a11cdf" class="">JP : 人と人が殺し合う戦争ほど恐ろしいものはない。<br/>KR : 사람과 사람이 서로 죽이는 전쟁만큼 무서운 것은 없다.</p><figure id="292bcc59-beeb-80de-956e-fb5b70794225" class="image"><a href="Quiz_Day%204%20(page240)/sensou_senjou.png"><img style="width:480px" src="Quiz_Day%204%20(page240)/sensou_senjou.png"/></a></figure><p id="292bcc59-beeb-80b7-8f25-d848028f2f40" class="">
+</p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="292bcc59-beeb-80af-8a9b-e794af87aabf"><div style="width:100%"><h3 id="292bcc59-beeb-80f4-8c36-df0dd9c9b068" class="">教わり（おそわる） : 배우다. 지식이나 정보를 누군가로부터 얻는 것, 기간은 상관없는</h3></div></figure><p id="292bcc59-beeb-80d4-814d-d84a3adf359a" class="">JP : 先週、私たちはサイトさんが教わった酒を買ってみました。<br/>KR : 지난 주, 사이토씨가 알려준 술을 사보았습니다.</p><figure id="292bcc59-beeb-8019-805c-ce5ea816f9d3" class="image"><a href="Quiz_Day%204%20(page240)/drink_syouchu.png"><img style="width:288px" src="Quiz_Day%204%20(page240)/drink_syouchu.png"/></a></figure><p id="292bcc59-beeb-80a4-b3ad-d49fd34081ad" class="">
+</p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="292bcc59-beeb-80df-b137-fe2dd07631f6"><div style="width:100%"><h3 id="292bcc59-beeb-80b3-b3ea-c9a1f6431d70" class="">習い（ならう） : 배우다. 기술이나 방법을 선생님이나 전문가, 혹은 그것을 잘 아는 사람으로부터 가르침을 받는 것</h3></div></figure><p id="292bcc59-beeb-80d6-bded-d7f328c468f4" class="">JP : 最近Duolingの日本語コースが終わって、英語を習い始めました。<br/>KR : 최근 듀오링고의 일본어가 끝나서 영어를 배우기 시작했습니다.</p><figure id="292bcc59-beeb-80cf-88d3-e26d66a654f6" class="image"><a href="Quiz_Day%204%20(page240)/english_writing.png"><img style="width:384px" src="Quiz_Day%204%20(page240)/english_writing.png"/></a></figure><p id="292bcc59-beeb-80c2-93fa-ff02a55a6ee8" class="">
+</p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="292bcc59-beeb-80e7-96ec-d504465107a9"><div style="width:100%"><h3 id="292bcc59-beeb-8027-8a45-f81dcadf02d3" class="">学ぶ（まなぶ） : 배우다. 다른 사람에게 배우거나 배우지 않더라도 체험하거나 하여 학문, 지식, 기술등을 몸에 익혀가는 것</h3></div></figure><p id="292bcc59-beeb-8066-9d1f-de644cdef85e" class="">JP : 彼は大学で学んだことを生かして、IT会社で働いています。<br/>KR : 그는 대학에서 배운 것을 살려 IT 회사에서 일하고 있습니다.</p><figure id="292bcc59-beeb-80c6-b3d8-dd34f2e1c890" class="image"><a href="Quiz_Day%204%20(page240)/computer_programming_man.png"><img style="width:432px" src="Quiz_Day%204%20(page240)/computer_programming_man.png"/></a></figure><p id="292bcc59-beeb-8003-b330-c82c9487d410" class="">
+</p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="292bcc59-beeb-80c3-aa31-e9b2c2cd6cfe"><div style="width:100%"><h3 id="292bcc59-beeb-8078-b1f3-e1cff0ca846f" class="">煽てられる（おだてる） : 치켜세우다. 상대에게 무엇인가를 하게 하려는 목적,상대방의 마음에 들고 싶다는 마음을 가지고 듣기 좋은 말을하거나 열심히 칭찬하는 것</h3></div></figure><p id="292bcc59-beeb-8034-a95f-febe1fc11de0" class="">JP : 彼は煽てられると調子に乗って何でもする。<br/>KR : 그는 치켜세워주면 우쭐해져 무엇이든 한다.</p><figure id="292bcc59-beeb-80c7-9107-cf408fef1236" class="image"><a href="Quiz_Day%204%20(page240)/party_kansougeikai_business_man.png"><img style="width:432px" src="Quiz_Day%204%20(page240)/party_kansougeikai_business_man.png"/></a></figure><p id="292bcc59-beeb-80e0-b2e0-de2b8a1fcf01" class="">
+</p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="292bcc59-beeb-805d-b02b-e741d48b892e"><div style="width:100%"><h3 id="292bcc59-beeb-8004-8702-d38f2fe10425" class="">ちやほやされる（ちやほやする） : 추어올리다. 필요 이상으로 소중하게 다루거나 돌봐주는 것, 상대가 제멋대로 되거나 우쭐해지는, 애지중지 같은 의미</h3></div></figure><p id="292bcc59-beeb-80b7-931d-dbcda3eeed2c" class="">JP : 彼女の社長は、みんなにちやほやされるのが好きだ。<br/>KR : 그녀의 사장님은 모두가 비위 맞춰주는 것을 좋아한다.</p><figure id="292bcc59-beeb-806f-a60c-d7be78ffa672" class="image"><a href="Quiz_Day%204%20(page240)/business_tayoreru_man.png"><img style="width:384px" src="Quiz_Day%204%20(page240)/business_tayoreru_man.png"/></a></figure><p id="292bcc59-beeb-8040-bf9c-e22ba8036801" class="">
+</p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="292bcc59-beeb-8056-848e-d9fce886a58c"><div style="width:100%"><h3 id="292bcc59-beeb-80af-ba95-d502ae66be22" class="">落として（おとす） : 떨어뜨리다,잃어버리다. 위에서 아래로 가게, 필요한 것을 잃어버리거나 빠뜨리거나 하는것, 품질,단계, 힘등을 낮추다라는 의미도 사용, 먼지,진흙 제거 등에도</h3></div></figure><p id="292bcc59-beeb-8063-997f-c058cb41f88e" class="">JP : スマホをどこかで落としてしまった。<br/>KR : 스마트폰을 어디에선가 잃어버리고 말았다.</p><figure id="292bcc59-beeb-8039-8f86-f1b83d16b21c" class="image"><a href="Quiz_Day%204%20(page240)/otoshimono_keitai.png"><img style="width:384px" src="Quiz_Day%204%20(page240)/otoshimono_keitai.png"/></a></figure><p id="294bcc59-beeb-80bf-9e96-cd15c44c337f" class="">
+</p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="292bcc59-beeb-80f8-85d6-dd704611c124"><div style="width:100%"><h3 id="292bcc59-beeb-8002-a647-e54471722511" class="">等しい（ひとしい） : 같다. 등호（等号）, 이퀄(=) 수량이나 정도에 100퍼센트 다르지 않은 가치가 있다고 할 때 사용, 대부분에 숫자, 사람의 행동에 대해서는 ~に等しい</h3></div></figure><p id="292bcc59-beeb-8013-a95d-c6a4f2f34262" class="">JP : 真冬に海に飛び込むなんて、自殺行為に等しい。<br/>KR : 한 겨울에 바다에 뛰어든다는 건 자살행위나 마찬가지다</p><figure id="292bcc59-beeb-806d-8a4a-e386d78ae6a1" class="image"><a href="Quiz_Day%204%20(page240)/jiko_oboreru.png"><img style="width:432px" src="Quiz_Day%204%20(page240)/jiko_oboreru.png"/></a></figure><p id="294bcc59-beeb-8024-bcdc-f123ba91a191" class="">
+</p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="292bcc59-beeb-80a5-9718-efa193d76fdf"><div style="width:100%"><h3 id="292bcc59-beeb-8025-af49-c86b31dd33dc" class="">思い出せない（おもいだす） : 생각해내다,기억하다. 잊어버리고 있던 일이나 과거 경험이 다시 마음속에 되살아나는 것</h3></div></figure><p id="292bcc59-beeb-80e0-830b-cb9144f6096f" class="">JP : 会社のパソコンのパスワードがいつも思い出せない。<br/>KR : 회사 컴퓨터의 암호가 항상 생각나지 않는다.</p><figure id="292bcc59-beeb-80f0-9711-c948622c9a33" class="image"><a href="Quiz_Day%204%20(page240)/computer_password_wasureta.png"><img style="width:432px" src="Quiz_Day%204%20(page240)/computer_password_wasureta.png"/></a></figure><p id="294bcc59-beeb-80b9-bcc1-d91bb9b23aee" class="">
+</p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="292bcc59-beeb-80d1-8c34-fcd0620d3481"><div style="width:100%"><h3 id="292bcc59-beeb-8085-ac67-e953ce43137b" class="">変わっている（かわっている） : 특이하다, 색다르다. 드물다,개성적이다는 의미로 좋게도 나쁘게도 쓰임</h3></div></figure><p id="292bcc59-beeb-8070-8f67-fc02e3aa09a4" class="">JP : 彼の名前は変わっているからみんなにすぐ覚えてもらえる。<br/>KR : 그의 이름은 특이하기 때문에 모두가 금방 외울 수 있다.</p><figure id="292bcc59-beeb-80d2-a3d6-c3e21787072d" class="image"><a href="Quiz_Day%204%20(page240)/nafuda_youchien.png"><img style="width:288px" src="Quiz_Day%204%20(page240)/nafuda_youchien.png"/></a></figure><p id="294bcc59-beeb-8001-abf0-fb403aab842b" class="">
+</p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="294bcc59-beeb-80a8-8eb8-cf8d36f2d2c8"><div style="width:100%"><h3 id="294bcc59-beeb-8011-9868-dc3b030ea733" class="">思わず（おもわず） : 무심결에, 무의식중에. 무의식적으로 반사적으로 무엇인가를 해버릴 때 사용</h3></div></figure><p id="294bcc59-beeb-80f3-91ce-cdf56decc5cd" class="">JP : 暗がりからねこが飛び出してきたので、思わず大声をあげてしまった。<br/>KR : 어둠 속에서 고양이가 뛰쳐나와서 나도 모르게 소리를 질러버렸다.</p><figure id="294bcc59-beeb-8086-a3a7-d7626a49bfc8" class="image"><a href="Quiz_Day%204%20(page240)/bikkuri_me_tobideru_woman.png"><img style="width:288px" src="Quiz_Day%204%20(page240)/bikkuri_me_tobideru_woman.png"/></a></figure><p id="294bcc59-beeb-80ab-9cda-df8b88ae91f8" class="">
+</p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="294bcc59-beeb-8020-b9bc-ffe8ad783591"><div style="width:100%"><h3 id="294bcc59-beeb-802a-81af-f84f35634e57" class="">思いがけない（おもいがけない） : 의외이다. 뜻밖이다. 예기치 못한것을 말할 때 의외思いがけない話、敵ごと、ところ등과 같이 명사에 붙여서 씀</h3></div></figure><p id="294bcc59-beeb-80a4-bcc9-d2b23a700eb3" class="">JP : 思いがけない贈り物、どうもありがとう。<br/>KR : 뜻밖의 선물 고마워!</p><figure id="294bcc59-beeb-80a7-9640-d370bf3169a9" class="image"><a href="Quiz_Day%204%20(page240)/present_girls.png"><img style="width:432px" src="Quiz_Day%204%20(page240)/present_girls.png"/></a></figure><p id="294bcc59-beeb-8076-a377-f67a86aa18e0" class="">
+</p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="294bcc59-beeb-809b-895d-c02807c3a76e"><div style="width:100%"><h3 id="294bcc59-beeb-80ac-8e3c-d8d3583729a5" class="">済む（すむ） : 끝내다. 終わる랑 같은 의미, 곤란한 경우를 어떻게든 벗어나려 할 때　気が済む 기분이 풀리다</h3></div></figure><p id="294bcc59-beeb-80fc-bd94-cd14eccc1721" class="">JP : これだけ泣いたら気が済んだでしょう。<br/>KR : 그 정도 울었으면 마음이 풀리겠죠?</p><figure id="294bcc59-beeb-80f0-b8ed-caa3c2f0988c" class="image"><a href="Quiz_Day%204%20(page240)/cry_naku_girl.png"><img style="width:480px" src="Quiz_Day%204%20(page240)/cry_naku_girl.png"/></a></figure><p id="294bcc59-beeb-802e-936f-d877fc5cc2ae" class="">
+</p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="294bcc59-beeb-80cf-97a9-ee166f8d7273"><div style="width:100%"><h3 id="294bcc59-beeb-8032-93cb-d9351daf8a5e" class="">返って（かえって） : 오히려, 도리어. 예상과 반대 결과가 되었을 때 나쁜상태를 좋게 하려고 한 행동이 전보다 나빠졌을때, 역으로도 나쁜게 결과적으로 좋아질때도 사용</h3></div></figure><p id="294bcc59-beeb-80cc-9387-d2df53a81db3" class="">JP : 失敗が返って良い結果を生むこともあります。<br/>KR : 실패가 오히려 좋은 결과를 낳을 때도 있습니다.</p><figure id="294bcc59-beeb-800f-9100-d7e643ab6612" class="image"><a href="Quiz_Day%204%20(page240)/science_hakase_shippai.png"><img style="width:240px" src="Quiz_Day%204%20(page240)/science_hakase_shippai.png"/></a></figure><p id="294bcc59-beeb-80f3-a6ce-d929e131468a" class="">
+</p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="294bcc59-beeb-8046-a154-ebcc6161a631"><div style="width:100%"><h3 id="294bcc59-beeb-80e1-9e6a-cd796f9f5080" class="">むしろ（むしろ） : 오히려, 차라리. A(より)むしろ B A와B두개를 비교하면 B쪽이 좋다고 생각한다고 할 때 사용</h3></div></figure><p id="294bcc59-beeb-8010-838d-d16c34b5b27e" class="">JP : 夜遅く疲れた頭で考えるより、むしろ朝早く起きて考えたほうがいいです。<br/>KR : 밤늦게 지친 머리로 생각하는 것보다는 오히려 아침에 일찍 일어나서 생각하는 편이 더 낫다.</p><figure id="294bcc59-beeb-8092-ad4f-f342c53a172a" class="image"><a href="Quiz_Day%204%20(page240)/time_man1_asa.png"><img style="width:336px" src="Quiz_Day%204%20(page240)/time_man1_asa.png"/></a></figure><p id="292bcc59-beeb-80b3-a71f-d7d4334ef09d" class="">
+</p></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>
