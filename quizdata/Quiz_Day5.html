@@ -1,0 +1,726 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Quiz_Day 5 (page300)</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 10px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.collection-content td {
+	white-space: pre-wrap;
+	word-break: break-word;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.callout img.notion-static-icon {
+	width: 1em;
+	height: 1em;
+}
+
+.callout p {
+	margin: 0;
+}
+
+.callout h1,
+.callout h2,
+.callout h3 {
+	margin: 0 0 0.6rem;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+blockquote.quote-large {
+	font-size: 1.25em;
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.highlight-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.highlight-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.highlight-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.highlight-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.highlight-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.highlight-default_background {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray_background {
+	background: rgba(42, 28, 0, 0.07);
+}
+.highlight-brown_background {
+	background: rgba(139, 46, 0, 0.086);
+}
+.highlight-orange_background {
+	background: rgba(224, 101, 1, 0.129);
+}
+.highlight-yellow_background {
+	background: rgba(211, 168, 0, 0.137);
+}
+.highlight-teal_background {
+	background: rgba(0, 100, 45, 0.09);
+}
+.highlight-blue_background {
+	background: rgba(0, 124, 215, 0.094);
+}
+.highlight-purple_background {
+	background: rgba(102, 0, 178, 0.078);
+}
+.highlight-pink_background {
+	background: rgba(197, 0, 93, 0.086);
+}
+.highlight-red_background {
+	background: rgba(223, 22, 0, 0.094);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.block-color-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.block-color-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.block-color-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.block-color-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.block-color-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(240, 239, 237, 1);
+}
+.block-color-brown_background {
+	background: rgba(245, 237, 233, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 235, 222, 1);
+}
+.block-color-yellow_background {
+	background: rgba(249, 243, 220, 1);
+}
+.block-color-teal_background {
+	background: rgba(232, 241, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(229, 242, 252, 1);
+}
+.block-color-purple_background {
+	background: rgba(243, 235, 249, 1);
+}
+.block-color-pink_background {
+	background: rgba(250, 233, 241, 1);
+}
+.block-color-red_background {
+	background: rgba(252, 233, 231, 1);
+}
+.select-value-color-default { background-color: rgba(42, 28, 0, 0.07); }
+.select-value-color-gray { background-color: rgba(28, 19, 1, 0.11); }
+.select-value-color-brown { background-color: rgba(127, 51, 0, 0.156); }
+.select-value-color-orange { background-color: rgba(196, 88, 0, 0.203); }
+.select-value-color-yellow { background-color: rgba(209, 156, 0, 0.282); }
+.select-value-color-green { background-color: rgba(0, 96, 38, 0.156); }
+.select-value-color-blue { background-color: rgba(0, 118, 217, 0.203); }
+.select-value-color-purple { background-color: rgba(92, 0, 163, 0.141); }
+.select-value-color-pink { background-color: rgba(183, 0, 78, 0.152); }
+.select-value-color-red { background-color: rgba(206, 24, 0, 0.164); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="29dbcc59-beeb-8041-94c1-e3d74074ca5f" class="page sans"><header><div class="page-header-icon undefined"><img class="icon" src="Quiz_Day%205%20(page300)/file.png"/></div><h1 class="page-title">Quiz_Day 5 (page300)</h1><p class="page-description"></p></header><div class="page-body"><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="29dbcc59-beeb-81c0-87d0-c07f23c36ced"><div style="width:100%"><h3 id="29dbcc59-beeb-81d1-b557-d95a0418a40f" class="">かなり（かなり） : 꽤 상당히. 양과 질, 정도 등 크기나 높이를 강조할 때 사용</h3></div></figure><p id="29dbcc59-beeb-812c-b479-ee19b626fd1f" class="">JP : この問題は、簡単そうで、実際はかなり難しい。<br/>KR : 이 문제는 간단해 보이지만 실제로는 상당히 어렵다.</p><figure id="29dbcc59-beeb-80c9-b04d-d05af5032b0f" class="image"><a href="Quiz_Day%205%20(page300)/job_suugakusya.png"><img style="width:432px" src="Quiz_Day%205%20(page300)/job_suugakusya.png"/></a></figure><p id="29dbcc59-beeb-8126-bf91-e70545f918f8" class="">
+</p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="29dbcc59-beeb-8137-9b2e-d0ff7d7a4bd9"><div style="width:100%"><h3 id="29dbcc59-beeb-817c-9187-c4a164334cae" class="">大分（だいぶ） : 꽤, 상당히. 비교하여 양과 질, 정도 등의 변화가 크다</h3></div></figure><p id="29dbcc59-beeb-81d7-b84c-d36a69462edd" class="">JP : 今日は、昨日より大分暖かい。<mark class="highlight-teal"><br/></mark>KR : 오늘은 어제보다 상당히 따뜻하다.</p><figure id="29dbcc59-beeb-8034-9106-d6eabc9be7f8" class="image"><a href="Quiz_Day%205%20(page300)/aa9d464540c87b0e65cfb47418ade606.png"><img style="width:480px" src="Quiz_Day%205%20(page300)/aa9d464540c87b0e65cfb47418ade606.png"/></a></figure><p id="29dbcc59-beeb-8163-a275-f052c0b72fa0" class="">
+</p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="29dbcc59-beeb-813d-a0b1-f39420ff418d"><div style="width:100%"><h3 id="29dbcc59-beeb-8128-8bbc-f33eb991d6d2" class="">被せて（かぶせる） : 덮다, 씌우다. 위에 놓음으로써 숨길 때, 위에서 덮어버릴 때, 책임이나 죄를 남탓으로 돌릴 때</h3></div></figure><p id="29dbcc59-beeb-81cd-a7b5-f2d2a9e4e4a6" class="">JP : 料理が残ったら、ラップを被せておいてください。<mark class="highlight-teal"><br/></mark>KR : 요리가 남으면 랩을 씌워두세요.</p><figure id="29dbcc59-beeb-80dd-8754-c2195c67bf7e" class="image"><a href="Quiz_Day%205%20(page300)/cooking_wrap.png"><img style="width:480px" src="Quiz_Day%205%20(page300)/cooking_wrap.png"/></a></figure><p id="29dbcc59-beeb-81a7-a5b5-dd84444fd740" class="">
+</p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="29dbcc59-beeb-81d2-bde8-dc115ce5aa5a"><div style="width:100%"><h3 id="29dbcc59-beeb-81f2-a799-d5b71e459d1c" class="">覆われた（おおう） : 덮다. 사물 전체를 숨기고 완전히 보이지 않도록 할 때 사용. 안의 물건을 빛, 공기, 열 등으로부터 차단한다는 의미를 내포</h3></div></figure><p id="29dbcc59-beeb-8129-88fa-ea03e8fff42f" class="">JP : 町は一晩で雪に覆われた。<mark class="highlight-teal"><br/></mark>KR : 마을은 하룻밤 사이에 눈으로 덮였다.</p><figure id="29dbcc59-beeb-8084-aaa3-e9b8a765cc0a" class="image"><a href="Quiz_Day%205%20(page300)/yukigeshiki.png"><img style="width:624px" src="Quiz_Day%205%20(page300)/yukigeshiki.png"/></a></figure><p id="29dbcc59-beeb-81fa-b709-d782ce995940" class="">
+</p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="29dbcc59-beeb-8180-841b-dfb9feacfe87"><div style="width:100%"><h3 id="29dbcc59-beeb-811f-bad2-cbcc41928cf6" class="">仮（かり） : 임시, 일시적. 진짜 대신에 다른 것을 짧은시간동안 사용할 때 사용, 임시 대응, 실제는 아니지만 만약에라는 뜻도 포함</h3></div></figure><p id="29dbcc59-beeb-81ac-8c6a-c4d7b9ea016e" class="">JP : このデータは仮で入れたものです。<mark class="highlight-teal"><br/></mark>KR : 이 데이터는 임시로 넣어둔 것입니다.</p><figure id="29dbcc59-beeb-80e1-b305-d5ddda0fc1e9" class="image"><a href="Quiz_Day%205%20(page300)/graph07_bou2.png"><img style="width:432px" src="Quiz_Day%205%20(page300)/graph07_bou2.png"/></a></figure><p id="29dbcc59-beeb-8166-a1ff-e56768910b8e" class="">
+</p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="29dbcc59-beeb-8128-b808-ca431425017f"><div style="width:100%"><h3 id="29dbcc59-beeb-8167-b746-dccc0e686b8f" class="">一時的（いちじてき） : 일시적. 그 때만, 그 장소에서만과 같이 단기간에 한정</h3></div></figure><p id="29dbcc59-beeb-8171-82bf-e88ca0c9dc91" class="">JP : 流行は一時的なので、長続きしない。<mark class="highlight-teal"><br/></mark>KR : 유행은 일시적인 것이기 때문에 오래가지 않는다.</p><figure id="29dbcc59-beeb-8011-90d4-f40d78ec4f7d" class="image"><a href="Quiz_Day%205%20(page300)/column-irasutoya-1.png"><img style="width:380.9872131347656px" src="Quiz_Day%205%20(page300)/column-irasutoya-1.png"/></a></figure><p id="29dbcc59-beeb-8106-b81f-fecb9a7b61de" class="">
+</p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="29dbcc59-beeb-8171-be9a-f03832a049d5"><div style="width:100%"><h3 id="29dbcc59-beeb-81e4-ad52-f112a674f068" class="">〜がる（〜がる） :  싶어하다. ~하고 싶다고 간절히 바랄 때</h3></div></figure><p id="29dbcc59-beeb-8104-b64c-d2043fd39074" class="">JP : 妻は犬を飼いたがっている。<mark class="highlight-teal"><br/></mark>KR : 아내는 개를 키우고 싶어한다.</p><figure id="29dbcc59-beeb-802a-b3c7-de5a4b0708e4" class="image"><a href="Quiz_Day%205%20(page300)/pet_niteru_dog.png"><img style="width:384px" src="Quiz_Day%205%20(page300)/pet_niteru_dog.png"/></a></figure><p id="29dbcc59-beeb-814d-892a-e83721540a2e" class="">
+</p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="29dbcc59-beeb-81b4-8183-dc63dd62d0ee"><div style="width:100%"><h3 id="29dbcc59-beeb-81f6-9c83-cb228e4e44fb" class="">ぶって（〜ぶる） : ~인 체하다. 자신의 인간성이나 신분을 실제보다 높게 보이려 하는 태도 </h3></div></figure><p id="29dbcc59-beeb-8184-a985-ceefa1d22d17" class="">JP : いくら上品ぶっていても、育ちはすぐにわかる。<mark class="highlight-teal"><br/></mark>KR : 아무리 고상한 척해도 살아온 환경은 금방 알 수가 있다.</p><figure id="29dbcc59-beeb-80a7-a024-d76180097d61" class="image"><a href="Quiz_Day%205%20(page300)/20170409161342.png"><img style="width:432px" src="Quiz_Day%205%20(page300)/20170409161342.png"/></a></figure><p id="29dbcc59-beeb-808f-9843-d4267255801b" class="">
+</p><p id="29dbcc59-beeb-80c6-a1fe-e0f016aeae2b" class="">
+</p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="29dbcc59-beeb-817c-8b39-dbf9b9330f3b"><div style="width:100%"><h3 id="29dbcc59-beeb-8142-b6bf-f50d35ccaf20" class=""><strong>ふりをする（ふりをする</strong>） : ~체하다. 실제의 자기와는 다른 모습이나 태도를 취하는 것</h3></div></figure><p id="29dbcc59-beeb-81cd-b7f1-f08958f43e74" class="">JP : 私はお酒が飲めないので、乾杯の時は飲むふりをする。<br/>KR : 나는 술을 마시지 못하기 때문에 건배할 때는 마시는 척 한다.</p><figure id="29dbcc59-beeb-8028-ab9d-c204f2f3e4bc" class="image"><a href="Quiz_Day%205%20(page300)/nomikai_happy_business.png"><img style="width:576px" src="Quiz_Day%205%20(page300)/nomikai_happy_business.png"/></a></figure><p id="29dbcc59-beeb-819d-adea-fff2e4c85aff" class="">
+</p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="29dbcc59-beeb-8122-a518-e90d1c77757e"><div style="width:100%"><h3 id="29dbcc59-beeb-814b-a0f8-d03f50bf92ec" class="">かわす（かわす） : 피하다. 재빠르게 몸을 움직여 재난으로 부터 벗어나는 것, 비판 추궁 등 추상적인 것에도 쓰임</h3></div></figure><p id="29dbcc59-beeb-81a3-8a9b-f5719c50843e" class="">JP : 首相は、記者団の質問をうまくかわした。<br/>KR : 수상은 기자단의 질문을 잘 피해갔다.</p><figure id="29dbcc59-beeb-80b9-a5e5-ec3399bfe619" class="image"><a href="Quiz_Day%205%20(page300)/seiji_souridaijin_kaiken3.png"><img style="width:576px" src="Quiz_Day%205%20(page300)/seiji_souridaijin_kaiken3.png"/></a></figure><p id="29dbcc59-beeb-81ff-b64a-ea156f6d3255" class="">
+</p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="29dbcc59-beeb-813b-9f09-e9d97f1221d2"><div style="width:100%"><h3 id="29dbcc59-beeb-811c-a7c1-cef512d1e7b8" class="">避けた（よける） : 피하다. 좋지 않은 일, 곤란한 일, 재난 등으로부터 벗어나는 것, 몸을 움직여 위험으로 벗어나는 것 이외에 미리 막다, 벗어나다, 방해가 되는걸 이동시켜버리다 라는 의미도 포함</h3></div></figure><p id="29dbcc59-beeb-81f3-9984-dbd58e1950b6" class="">JP : 曲がり角から急に、自転車が出て来たので、慌てて避けた。<br/>KR : 커브길에서 갑자기 자전거가 나왔기 때문에 황급히 피했다.</p><figure id="29dbcc59-beeb-8075-9f47-fac54055244f" class="image"><a href="Quiz_Day%205%20(page300)/jiko_bicycle_car.png"><img style="width:432px" src="Quiz_Day%205%20(page300)/jiko_bicycle_car.png"/></a></figure><p id="29dbcc59-beeb-81fb-859b-ea199c868e93" class="">
+</p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="29dbcc59-beeb-816f-af96-deaac14d715d"><div style="width:100%"><h3 id="29dbcc59-beeb-81fb-a29f-ee91ab23b829" class="">避けた（さける） : 피하다. 곤란한 일이나 바람직하지 않은 일에 다가가지 않도록 하는 것</h3></div></figure><p id="29dbcc59-beeb-81e2-ba40-ffa0ca7aeee9" class="">JP : できればラッシュアワーは避けたほうがいいです。<br/>KR : 가능하다면 러시아워는 피하는 게 좋습니다.</p><figure id="29dbcc59-beeb-802d-92f4-e027047f3e36" class="image"><a href="Quiz_Day%205%20(page300)/train_manin_business.png"><img style="width:528px" src="Quiz_Day%205%20(page300)/train_manin_business.png"/></a></figure><p id="29dbcc59-beeb-8096-a496-d5364ac0f53e" class="">
+</p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="29dbcc59-beeb-80ec-9d7c-eaa3c300e1b0"><div style="width:100%"><h3 id="29dbcc59-beeb-8069-b8ac-f7b94c54aea7" class="">感心（かんしん） : 감탄,기특함. 칭찬받을만하다, 좋은일이다라고 인정하는 것, 윗사람에게 하는것은 실례</h3></div></figure><p id="29dbcc59-beeb-8022-b8e8-dd29020bde2c" class="">JP : 彼の努力には皆んなが感心した。<br/>KR : 그의 노력에는 모든이들이 감탄했다.</p><figure id="29dbcc59-beeb-80c3-82e7-cb68137aec10" class="image"><a href="Quiz_Day%205%20(page300)/pose_naruhodo_woman.png"><img style="width:288px" src="Quiz_Day%205%20(page300)/pose_naruhodo_woman.png"/></a></figure><p id="29dbcc59-beeb-80df-8362-c6c1f5334f2a" class="">
+</p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="29dbcc59-beeb-8090-9b05-c25f8ed474dc"><div style="width:100%"><h3 id="29dbcc59-beeb-803a-acd8-fcd618e5a06c" class="">感動（かんどう） : 감동. 강하게 심적인 자극을 받고 공감하는 것, 예술이나 아름답고 마음을 훈훈하게 하는 일 등에 접했을 때 솟아나는 감정</h3></div></figure><p id="29dbcc59-beeb-80e6-9927-db01aa4b17c5" class="">JP : 人々は、困難を乗り越えた明るく生きる少女の姿に感動した。<br/>KR : 사람들은 역경을 이겨내고 밝게 살아가는 소녀의 모습에 감동했다.</p><figure id="29dbcc59-beeb-8063-b4ed-c1a6c1295d91" class="image"><a href="Quiz_Day%205%20(page300)/kabe_norikoeru_challenge_woman.png"><img style="width:480px" src="Quiz_Day%205%20(page300)/kabe_norikoeru_challenge_woman.png"/></a></figure><p id="29dbcc59-beeb-80b9-be37-ceac47ec8d92" class="">
+</p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="29dbcc59-beeb-80e7-8938-d02cbfd923a3"><div style="width:100%"><h3 id="29dbcc59-beeb-80f5-941c-caf1a93cf4b3" class="">利く（きく） : 효과가 있다, 듣다, 가능하다. 効く효과가 타나나는 것을 의미(약) 利く기능이 충분히 발휘되다</h3></div></figure><p id="29dbcc59-beeb-80f9-92c0-f2ba75b2b51e" class="">JP : この車は、ブレーキが利かなくなったので修理に出してあります。<br/>KR : 내 자동차는 브레이크가 작동하지 않아서 수리하러 보냈습니다.</p><figure id="29dbcc59-beeb-80dd-bf1d-cd24796753ca" class="image"><a href="Quiz_Day%205%20(page300)/car_tire_koukan_normal.png"><img style="width:528px" src="Quiz_Day%205%20(page300)/car_tire_koukan_normal.png"/></a></figure><p id="29dbcc59-beeb-80d7-b475-d589da9efa00" class="">
+</p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="29dbcc59-beeb-8056-bd5c-e6ecb97ebe0c"><div style="width:100%"><h3 id="29dbcc59-beeb-80d5-8f29-c03c653a73ba" class="">堪える（きく） : 효과가 있다, 듣다, 가능하다. 効く효과가 타나나는 것을 의미(약) 利く기능이 충분히 발휘되다</h3></div></figure><p id="29dbcc59-beeb-803e-a651-f22a3408cf13" class="">JP : この車は、ブレーキが利かなくなったので修理に出してあります。<br/>KR : 내 자동차는 브레이크가 작동하지 않아서 수리하러 보냈습니다.</p><figure id="29dbcc59-beeb-80b9-b65f-e29db2afb29e" class="image"><a href="Quiz_Day%205%20(page300)/car_tire_koukan_normal.png"><img style="width:528px" src="Quiz_Day%205%20(page300)/car_tire_koukan_normal.png"/></a></figure><p id="29dbcc59-beeb-80bc-85f4-c34d81e2d6dd" class="">
+</p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="29dbcc59-beeb-804f-a4bf-ed67ca90e77d"><div style="width:100%"><h3 id="29dbcc59-beeb-801e-ac2f-d4a30337d465" class="">聞こえる（きこえる） : 들리다. 소리가 자연히 귀에 들어오는 것, 그렇게 이해된다는 의미로도 사용</h3></div></figure><p id="29dbcc59-beeb-8028-9db8-f6fed4aaa279" class="">JP : 彼女の話を聞いていると、一方的に私が悪いように聞こえる。<br/>KR : 그녀의 이야기를 듣고 있으면 일방적으로 내가 나쁜 것처럼 들린다.</p><figure id="29dbcc59-beeb-8096-8b05-d49586035d7c" class="image"><a href="Quiz_Day%205%20(page300)/claimer_obasan.png"><img style="width:528px" src="Quiz_Day%205%20(page300)/claimer_obasan.png"/></a></figure><p id="29dbcc59-beeb-8081-ae20-c5b7f488cdb8" class="">
+</p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="29dbcc59-beeb-801e-acf0-d009ed642494"><div style="width:100%"><h3 id="29dbcc59-beeb-80e1-8206-dc889103b6b7" class="">聞かれる（きかれる） : 들려오다. 의견이나 말 등이 귀에 들어오는 것</h3></div></figure><p id="29dbcc59-beeb-80a5-a9ee-f58865a0ca51" class="">JP : 最近、若い人たちの敬語の使い方が変だという声が聞かれる。<br/>KR : 최근 젊은이들의 경어 사용법이 이상하다는 소리를 듣는다.</p><figure id="29dbcc59-beeb-808c-926b-edaa71f3b386" class="image"><a href="Quiz_Day%205%20(page300)/mensetsu_taido.png"><img style="width:432px" src="Quiz_Day%205%20(page300)/mensetsu_taido.png"/></a></figure><p id="29dbcc59-beeb-80b9-acab-d737767332e9" class="">
+</p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="29dbcc59-beeb-8098-a7b0-dc37d6cc900e"><div style="width:100%"><h3 id="29dbcc59-beeb-808d-866b-cf01a5028034" class="">汚らしい（きたならしい） : 추접스럽다. 불결하게 보이거나 느낄 때, 더러워져 있는 것처럼 보이거나 느낄 때</h3></div></figure><p id="29dbcc59-beeb-8058-a7a4-edd295f5666c" class="">JP : 汚らしい格好をしていると、誰にも相手にされなくなりますよ。<br/>KR : 꾀죄죄한 차림새를 하고 있으면 누구도 상대해 주지 않게되요.</p><figure id="29dbcc59-beeb-80e8-8e7a-c9d6e980886c" class="image"><a href="Quiz_Day%205%20(page300)/business_suit_bad.png"><img style="width:485.9872131347656px" src="Quiz_Day%205%20(page300)/business_suit_bad.png"/></a></figure><p id="29dbcc59-beeb-8088-b2f2-f09b87b36702" class="">
+</p></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>
